@@ -1,0 +1,685 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description" content="Explore hotel room details, facilities, pricing and guest reviews at HotelSphere.">
+
+    <title>Room Details | HotelSphere</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <style>
+        .details-page {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 20px;
+        }
+
+        .details-header {
+            margin-bottom: 25px;
+        }
+
+        .details-header h1 {
+            font-size: 30px;
+            margin-bottom: 8px;
+        }
+
+        .details-header p {
+            color: var(--text-muted, #777);
+        }
+
+        .room-gallery {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 12px;
+            margin-bottom: 30px;
+        }
+
+        .room-gallery-main {
+            height: 400px;
+            overflow: hidden;
+            border-radius: 15px;
+        }
+
+        .room-gallery-main img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .room-gallery-thumbnails {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+
+        .gallery-thumbnail {
+            width: 100%;
+            height: 194px;
+            object-fit: cover;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: .3s;
+        }
+
+        .gallery-thumbnail:hover {
+            transform: scale(1.02);
+        }
+
+        .room-details-layout {
+            display: grid;
+            grid-template-columns: 1.6fr 1fr;
+            gap: 25px;
+        }
+
+        .details-card,
+        .booking-card,
+        .reviews-card {
+            background: var(--card-bg, #fff);
+            border: 1px solid var(--border-color, #e5e7eb);
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 22px;
+            box-shadow: 0 8px 25px rgba(0,0,0,.04);
+        }
+
+        .details-card h2,
+        .booking-card h2,
+        .reviews-card h2 {
+            margin-bottom: 18px;
+        }
+
+        .room-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 18px;
+            margin: 15px 0;
+            color: var(--text-muted, #777);
+        }
+
+        .room-description {
+            line-height: 1.8;
+            color: var(--text-muted, #666);
+        }
+
+        .amenities-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+        }
+
+        .amenity {
+            padding: 12px;
+            background: var(--input-bg, #f8fafc);
+            border-radius: 8px;
+        }
+
+        .booking-price {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .booking-price small {
+            font-size: 14px;
+            font-weight: 400;
+            color: var(--text-muted, #777);
+        }
+
+        .booking-card label,
+        .review-form label {
+            display: block;
+            margin: 15px 0 7px;
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        .booking-card input,
+        .booking-card select,
+        .review-form input,
+        .review-form textarea,
+        .review-search input,
+        .review-search select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid var(--border-color, #ddd);
+            border-radius: 8px;
+            background: var(--input-bg, #fff);
+            color: var(--text-color, #222);
+        }
+
+        .booking-summary {
+            background: var(--input-bg, #f8fafc);
+            padding: 16px;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+
+        .summary-row {
+            display: flex;
+            justify-content: space-between;
+            gap: 10px;
+            margin: 10px 0;
+        }
+
+        .summary-total {
+            border-top: 1px solid var(--border-color, #ddd);
+            padding-top: 12px;
+            font-weight: 700;
+        }
+
+        .booking-card button {
+            width: 100%;
+            margin-top: 18px;
+        }
+
+        .review-summary {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-bottom: 25px;
+            padding: 18px;
+            background: var(--input-bg, #f8fafc);
+            border-radius: 10px;
+        }
+
+        .average-rating {
+            font-size: 35px;
+            font-weight: 700;
+        }
+
+        .rating-stars {
+            color: #f59e0b;
+            letter-spacing: 2px;
+        }
+
+        .rating-breakdown {
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .rating-line {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin: 7px 0;
+            font-size: 13px;
+        }
+
+        .rating-track {
+            flex: 1;
+            height: 8px;
+            background: #e5e7eb;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .rating-fill {
+            height: 100%;
+            width: 0%;
+            background: #f59e0b;
+        }
+
+        .review-form {
+            margin-top: 25px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-color, #ddd);
+        }
+
+        .review-form textarea {
+            min-height: 110px;
+            resize: vertical;
+        }
+
+        .rating-options {
+            display: flex;
+            flex-direction: row;
+            gap: 12px;
+            margin: 12px 0;
+        }
+
+        .rating-options label {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            cursor: pointer;
+        }
+
+        .review-item {
+            padding: 18px 0;
+            border-bottom: 1px solid var(--border-color, #ddd);
+        }
+
+        .review-item:last-child {
+            border-bottom: none;
+        }
+
+        .review-item h4 {
+            margin-bottom: 7px;
+        }
+
+        .review-item p {
+            line-height: 1.7;
+            color: var(--text-muted, #777);
+        }
+
+        .review-search {
+            display: grid;
+            grid-template-columns: 1fr 180px;
+            gap: 12px;
+            margin: 20px 0;
+        }
+
+        .review-message {
+            margin-top: 12px;
+            font-size: 14px;
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        @media(max-width: 800px) {
+            .room-gallery {
+                grid-template-columns: 1fr;
+            }
+
+            .room-gallery-main {
+                height: 300px;
+            }
+
+            .gallery-thumbnail {
+                height: 130px;
+            }
+
+            .room-details-layout {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media(max-width: 500px) {
+            .amenities-grid,
+            .review-search {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <main class="details-page">
+
+        <a href="explore.html">← Back to Explore</a>
+
+        <!-- Room Heading -->
+        <header class="details-header">
+
+            <h1 id="roomName">Deluxe Hotel Room</h1>
+
+            <p id="roomLocation">
+                Premium Hotel Experience
+            </p>
+
+            <div class="room-meta">
+                <span>⭐ 4.8 Guest Rating</span>
+                <span>🛏️ Comfortable Stay</span>
+                <span>👥 Ideal for Guests</span>
+            </div>
+
+        </header>
+
+        <!-- Room Gallery -->
+        <section class="room-gallery">
+
+            <div class="room-gallery-main">
+                <img
+                    id="mainRoomImage"
+                    src="https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=1200"
+                    alt="Hotel room main view"
+                >
+            </div>
+
+            <div class="room-gallery-thumbnails">
+
+                <img
+                    class="gallery-thumbnail"
+                    src="https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=600"
+                    alt="Hotel room view 1"
+                >
+
+                <img
+                    class="gallery-thumbnail"
+                    src="https://images.unsplash.com/photo-1566665797739-1674de7a421a?w=600"
+                    alt="Hotel room view 2"
+                >
+
+                <img
+                    class="gallery-thumbnail"
+                    src="https://images.unsplash.com/photo-1578683010236-d716f9a3f461?w=600"
+                    alt="Hotel room view 3"
+                >
+
+                <img
+                    class="gallery-thumbnail"
+                    src="https://images.unsplash.com/photo-1590490360182-c33d57733427?w=600"
+                    alt="Hotel room view 4"
+                >
+
+            </div>
+
+        </section>
+
+        <div class="room-details-layout">
+
+            <!-- Left Content -->
+            <div>
+
+                <section class="details-card">
+
+                    <h2>About This Room</h2>
+
+                    <p class="room-description">
+                        Enjoy a comfortable and relaxing stay in our
+                        premium hotel room. Designed with modern
+                        interiors, comfortable bedding and essential
+                        facilities, this room provides an excellent
+                        experience for business and leisure travellers.
+                    </p>
+
+                </section>
+
+                <section class="details-card">
+
+                    <h2>Room Amenities</h2>
+
+                    <div class="amenities-grid">
+
+                        <div class="amenity">📶 Free Wi-Fi</div>
+                        <div class="amenity">❄️ Air Conditioning</div>
+                        <div class="amenity">📺 Smart TV</div>
+                        <div class="amenity">🚿 Attached Bathroom</div>
+                        <div class="amenity">☕ Tea & Coffee</div>
+                        <div class="amenity">🛎️ Room Service</div>
+                        <div class="amenity">🧹 Daily Housekeeping</div>
+                        <div class="amenity">🔐 Secure Locker</div>
+
+                    </div>
+
+                </section>
+
+                <!-- Reviews -->
+                <section class="reviews-card" id="reviews">
+
+                    <h2>Guest Reviews</h2>
+
+                    <div class="review-summary">
+
+                        <div>
+                            <div class="average-rating" id="averageRating">
+                                0.0
+                            </div>
+
+                            <div
+                                class="rating-stars"
+                                id="averageStars"
+                            >
+                                ☆☆☆☆☆
+                            </div>
+
+                            <p>
+                                <span id="totalReviews">0</span> Reviews
+                            </p>
+                        </div>
+
+                        <div class="rating-breakdown">
+
+                            <div class="rating-line">
+                                <span>5 ⭐</span>
+                                <div class="rating-track">
+                                    <div class="rating-fill" id="ratingBar5"></div>
+                                </div>
+                                <span id="ratingCount5">0</span>
+                            </div>
+
+                            <div class="rating-line">
+                                <span>4 ⭐</span>
+                                <div class="rating-track">
+                                    <div class="rating-fill" id="ratingBar4"></div>
+                                </div>
+                                <span id="ratingCount4">0</span>
+                            </div>
+
+                            <div class="rating-line">
+                                <span>3 ⭐</span>
+                                <div class="rating-track">
+                                    <div class="rating-fill" id="ratingBar3"></div>
+                                </div>
+                                <span id="ratingCount3">0</span>
+                            </div>
+
+                            <div class="rating-line">
+                                <span>2 ⭐</span>
+                                <div class="rating-track">
+                                    <div class="rating-fill" id="ratingBar2"></div>
+                                </div>
+                                <span id="ratingCount2">0</span>
+                            </div>
+
+                            <div class="rating-line">
+                                <span>1 ⭐</span>
+                                <div class="rating-track">
+                                    <div class="rating-fill" id="ratingBar1"></div>
+                                </div>
+                                <span id="ratingCount1">0</span>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <!-- Search and Sort -->
+                    <div class="review-search">
+
+                        <input
+                            type="search"
+                            id="reviewSearch"
+                            placeholder="Search reviews..."
+                        >
+
+                        <select id="reviewSort">
+                            <option value="newest">Newest First</option>
+                            <option value="highest">Highest Rated</option>
+                            <option value="lowest">Lowest Rated</option>
+                        </select>
+
+                    </div>
+
+                    <!-- Reviews List -->
+                    <div id="reviewsContainer">
+                        <p>No reviews available yet.</p>
+                    </div>
+
+                    <!-- Review Form -->
+                    <form id="reviewForm" class="review-form">
+
+                        <h3>Write a Review</h3>
+
+                        <input
+                            type="hidden"
+                            id="reviewRoomId"
+                            value=""
+                        >
+
+                        <label>Choose Your Rating</label>
+
+                        <div class="rating-options">
+
+                            <label>
+                                <input type="radio" name="reviewRating" value="1">
+                                1 ⭐
+                            </label>
+
+                            <label>
+                                <input type="radio" name="reviewRating" value="2">
+                                2 ⭐
+                            </label>
+
+                            <label>
+                                <input type="radio" name="reviewRating" value="3">
+                                3 ⭐
+                            </label>
+
+                            <label>
+                                <input type="radio" name="reviewRating" value="4">
+                                4 ⭐
+                            </label>
+
+                            <label>
+                                <input type="radio" name="reviewRating" value="5">
+                                5 ⭐
+                            </label>
+
+                        </div>
+
+                        <p id="ratingPreview">
+                            Select your rating.
+                        </p>
+
+                        <label for="reviewTitle">
+                            Review Title
+                        </label>
+
+                        <input
+                            type="text"
+                            id="reviewTitle"
+                            placeholder="Write a short review title"
+                            required
+                            maxlength="100"
+                        >
+
+                        <label for="reviewComment">
+                            Your Experience
+                        </label>
+
+                        <textarea
+                            id="reviewComment"
+                            placeholder="Share your experience..."
+                            required
+                            maxlength="1000"
+                        ></textarea>
+
+                        <button
+                            type="submit"
+                            class="btn btn-primary"
+                        >
+                            Submit Review
+                        </button>
+
+                        <div
+                            id="reviewMessage"
+                            class="review-message"
+                            role="status"
+                            aria-live="polite"
+                        ></div>
+
+                    </form>
+
+                </section>
+
+            </div>
+
+            <!-- Right Booking Panel -->
+            <aside>
+
+                <section class="booking-card">
+
+                    <div class="booking-price">
+                        ₹<span id="roomPrice">2500</span>
+                        <small>/ night</small>
+                    </div>
+
+                    <p>Book your comfortable stay.</p>
+
+                    <form id="roomBookingForm">
+
+                        <label for="detailCheckIn">
+                            Check-in Date
+                        </label>
+
+                        <input
+                            type="date"
+                            id="detailCheckIn"
+                            required
+                        >
+
+                        <label for="detailCheckOut">
+                            Check-out Date
+                        </label>
+
+                        <input
+                            type="date"
+                            id="detailCheckOut"
+                            required
+                        >
+
+                        <label for="detailGuests">
+                            Number of Guests
+                        </label>
+
+                        <select id="detailGuests" required>
+                            <option value="1">1 Guest</option>
+                            <option value="2" selected>2 Guests</option>
+                            <option value="3">3 Guests</option>
+                            <option value="4">4 Guests</option>
+                            <option value="5">5 Guests</option>
+                        </select>
+
+                        <div class="booking-summary">
+
+                            <h3>Booking Summary</h3>
+
+                            <div class="summary-row">
+                                <span>Price per night</span>
+                                <span id="summaryPrice">₹2500</span>
+                            </div>
+
+                            <div class="summary-row">
+                                <span>Total Nights</span>
+                                <span id="summaryNights">0</span>
+                            </div>
+
+                            <div class="summary-row summary-total">
+                                <span>Estimated Total</span>
+                                <span id="summaryTotal">₹0</span>
+                            </div>
+
+                        </div>
+
+                        <button
+                            type="submit"
+                            class="btn btn-primary"
+                        >
+                            Proceed to Booking
+                        </button>
+
+                    </form>
+
+                </section>
+
+            </aside>
+
+        </div>
+
+    </main>
+
+    <script src="js/site.js"></script>
+    <script src="js/room-details.js"></script>
+    <script src="js/reviews.js"></script>
+
+</body>
+</html>

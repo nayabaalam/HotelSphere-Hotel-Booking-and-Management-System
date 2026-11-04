@@ -1,0 +1,254 @@
+
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description"
+        content="The page you are looking for could not be found on HotelSphere.">
+
+    <title>404 - Page Not Found | HotelSphere</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@500;600;700&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <script>
+        (function () {
+            const theme = localStorage.getItem("hotelsphere-theme");
+
+            if (theme === "dark" || theme === "light") {
+                document.documentElement.setAttribute("data-theme", theme);
+            }
+        })();
+    </script>
+</head>
+
+<body class="error-page">
+
+    <!-- HEADER -->
+    <header class="site-header">
+
+        <nav class="navbar container">
+
+            <a href="index.html" class="brand-logo">
+
+                <span class="brand-icon">
+                    <i class="fa-solid fa-hotel"></i>
+                </span>
+
+                <span class="brand-text">
+                    <strong>HotelSphere</strong>
+                    <small>STAY BEYOND EXPECTATIONS</small>
+                </span>
+
+            </a>
+
+
+            <div class="nav-actions">
+
+                <button class="theme-toggle"
+                    id="themeToggle"
+                    type="button"
+                    aria-label="Switch theme">
+
+                    <i class="fa-solid fa-moon"></i>
+
+                </button>
+
+                <a href="index.html" class="btn btn-outline">
+                    <i class="fa-solid fa-house"></i>
+                    Home
+                </a>
+
+            </div>
+
+        </nav>
+
+    </header>
+
+
+    <!-- MAIN -->
+    <main class="error-main">
+
+        <div class="container">
+
+            <section class="error-content">
+
+
+                <!-- ERROR GRAPHIC -->
+                <div class="error-illustration">
+
+                    <div class="error-circle error-circle-one"></div>
+
+                    <div class="error-circle error-circle-two"></div>
+
+
+                    <div class="error-hotel-icon">
+
+                        <i class="fa-solid fa-hotel"></i>
+
+                    </div>
+
+
+                    <span class="error-number">
+                        404
+                    </span>
+
+
+                    <div class="error-floating-icon error-floating-one">
+                        <i class="fa-solid fa-key"></i>
+                    </div>
+
+
+                    <div class="error-floating-icon error-floating-two">
+                        <i class="fa-solid fa-location-dot"></i>
+                    </div>
+
+
+                </div>
+
+
+                <!-- ERROR TEXT -->
+                <div class="error-text">
+
+                    <span class="section-eyebrow">
+                        OOPS! PAGE NOT FOUND
+                    </span>
+
+                    <h1>
+                        Looks Like You've
+                        <span>Lost Your Way.</span>
+                    </h1>
+
+                    <p>
+                        The page you are looking for may have
+                        been moved, deleted or temporarily
+                        unavailable. Don't worry, let's
+                        get you back on track.
+                    </p>
+
+
+                    <!-- ACTIONS -->
+                    <div class="error-actions">
+
+                        <a href="index.html"
+                            class="btn btn-primary">
+
+                            <i class="fa-solid fa-house"></i>
+                            Back to Homepage
+
+                        </a>
+
+
+                        <a href="explore.html"
+                            class="btn btn-outline">
+
+                            <i class="fa-solid fa-bed"></i>
+                            Explore Hotels
+
+                        </a>
+
+                    </div>
+
+
+                    <!-- SEARCH -->
+                    <div class="error-search-section">
+
+                        <p>
+                            Or explore something else:
+                        </p>
+
+                        <div class="error-quick-links">
+
+                            <a href="explore.html">
+                                <i class="fa-solid fa-hotel"></i>
+                                Hotels
+                            </a>
+
+                            <a href="my-bookings.html">
+                                <i class="fa-solid fa-calendar-check"></i>
+                                My Bookings
+                            </a>
+
+                            <a href="contact.html">
+                                <i class="fa-solid fa-headset"></i>
+                                Support
+                            </a>
+
+                            <a href="faq.html">
+                                <i class="fa-solid fa-circle-question"></i>
+                                FAQs
+                            </a>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- SUPPORT -->
+                    <div class="error-support-note">
+
+                        <i class="fa-regular fa-envelope"></i>
+
+                        Still need help?
+
+                        <a href="mailto:support@hotelsphere.com">
+                            Contact our support team
+                        </a>
+
+                    </div>
+
+
+                </div>
+
+            </section>
+
+        </div>
+
+    </main>
+
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+
+        <div class="container">
+
+            <div class="footer-bottom">
+
+                <p>
+                    © <span id="currentYear"></span>
+                    HotelSphere. All rights reserved.
+                </p>
+
+                <p>
+                    <i class="fa-solid fa-heart"></i>
+                    Designed for Better Stays
+                </p>
+
+            </div>
+
+        </div>
+
+    </footer>
+
+
+    <!-- SCRIPTS -->
+    <script src="js/config.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/site.js"></script>
+    
+
+</body>
+</html>
+

@@ -1,0 +1,367 @@
+
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description"
+        content="Sign in to your HotelSphere account and manage your hotel bookings.">
+
+    <title>Sign In | HotelSphere</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@500;600;700&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <script>
+        (function () {
+            const theme = localStorage.getItem("hotelsphere-theme");
+
+            if (theme === "dark" || theme === "light") {
+                document.documentElement.setAttribute("data-theme", theme);
+            }
+        })();
+    </script>
+</head>
+
+<body class="auth-page">
+
+    <!-- AUTH HEADER -->
+    <header class="site-header auth-header">
+
+        <nav class="navbar container">
+
+            <a href="index.html" class="brand-logo">
+
+                <span class="brand-icon">
+                    <i class="fa-solid fa-hotel"></i>
+                </span>
+
+                <span class="brand-text">
+                    <strong>HotelSphere</strong>
+                    <small>STAY BEYOND EXPECTATIONS</small>
+                </span>
+
+            </a>
+
+
+            <div class="nav-actions">
+
+                <button class="theme-toggle"
+                    id="themeToggle"
+                    type="button"
+                    aria-label="Switch theme">
+
+                    <i class="fa-solid fa-moon"></i>
+
+                </button>
+
+                <a href="index.html" class="btn btn-outline">
+                    <i class="fa-solid fa-arrow-left"></i>
+                    Back Home
+                </a>
+
+            </div>
+
+        </nav>
+
+    </header>
+
+
+    <main class="auth-main">
+
+        <div class="container auth-container">
+
+
+            <!-- LEFT VISUAL PANEL -->
+            <section class="auth-visual">
+
+                <img
+                    src="https://images.unsplash.com/photo-1571896349842-33c89424de2d?auto=format&fit=crop&w=1400&q=90"
+                    alt="Beautiful luxury hotel resort">
+
+                <div class="auth-visual-overlay"></div>
+
+
+                <div class="auth-visual-content">
+
+                    <span class="auth-visual-badge">
+                        <i class="fa-solid fa-star"></i>
+                        WELCOME TO HOTELSPHERE
+                    </span>
+
+                    <h1>
+                        Every Great Journey
+                        Begins with a
+                        <span>Wonderful Stay.</span>
+                    </h1>
+
+                    <p>
+                        Sign in to discover beautiful destinations,
+                        manage your bookings and enjoy a seamless
+                        hotel experience.
+                    </p>
+
+
+                    <div class="auth-benefits">
+
+                        <div>
+                            <i class="fa-solid fa-check-circle"></i>
+                            Discover exceptional stays
+                        </div>
+
+                        <div>
+                            <i class="fa-solid fa-check-circle"></i>
+                            Manage your reservations
+                        </div>
+
+                        <div>
+                            <i class="fa-solid fa-check-circle"></i>
+                            Enjoy convenient booking access
+                        </div>
+
+                    </div>
+
+
+                    <div class="auth-live-time">
+
+                        <i class="fa-regular fa-calendar"></i>
+
+                        <span id="currentDate">
+                            Loading date...
+                        </span>
+
+                        <span>|</span>
+
+                        <strong id="currentTime">
+                            --:--:--
+                        </strong>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- RIGHT LOGIN PANEL -->
+            <section class="auth-form-panel">
+
+                <div class="auth-form-wrapper">
+
+                    <div class="auth-form-heading">
+
+                        <span class="auth-icon">
+                            <i class="fa-solid fa-user"></i>
+                        </span>
+
+                        <span class="section-eyebrow">
+                            YOUR ACCOUNT
+                        </span>
+
+                        <h2>Welcome Back!</h2>
+
+                        <p>
+                            Sign in to continue your HotelSphere journey.
+                        </p>
+
+                    </div>
+
+
+                    <!-- LOGIN FORM -->
+                    <form id="loginForm" class="auth-form" novalidate>
+
+
+                        <!-- EMAIL -->
+                        <div class="form-group">
+
+                            <label for="loginEmail">
+                                Email Address
+                            </label>
+
+                            <div class="input-with-icon">
+
+                                <i class="fa-regular fa-envelope"></i>
+
+                                <input
+                                    type="email"
+                                    id="loginEmail"
+                                    name="email"
+                                    placeholder="Enter your email address"
+                                    autocomplete="username"
+                                    required>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- PASSWORD -->
+                        <div class="form-group">
+
+                            <div class="form-label-row">
+
+                                <label for="loginPassword">
+                                    Password
+                                </label>
+
+                                <a href="forgot-password.html">
+                                    Forgot Password?
+                                </a>
+
+                            </div>
+
+
+                            <div class="input-with-icon">
+
+                                <i class="fa-solid fa-lock"></i>
+
+                                <input
+                                    type="password"
+                                    id="loginPassword"
+                                    name="password"
+                                    placeholder="Enter your password"
+                                    autocomplete="current-password"
+                                    required>
+
+                                <button type="button"
+                                    class="password-toggle"
+                                    id="togglePassword"
+                                    aria-label="Show password">
+
+                                    <i class="fa-regular fa-eye"></i>
+
+                                </button>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- REMEMBER ME -->
+                        <div class="auth-options">
+
+                            <label class="remember-option">
+
+                                <input
+                                    type="checkbox"
+                                    id="rememberMe"
+                                    name="rememberMe">
+
+                                <span>Remember me</span>
+
+                            </label>
+
+                        </div>
+
+
+                        <!-- MESSAGE -->
+                        <div id="loginMessage"
+                            class="form-message"
+                            role="status"
+                            aria-live="polite">
+                        </div>
+
+
+                        <!-- SUBMIT -->
+                        <button type="submit"
+                            class="btn btn-primary auth-submit"
+                            id="loginButton">
+
+                            <span>Sign In</span>
+
+                            <i class="fa-solid fa-arrow-right"></i>
+
+                        </button>
+
+
+                        <div class="auth-divider">
+                            <span>OR</span>
+                        </div>
+
+
+                        <!-- GUEST OPTION -->
+                        <a href="explore.html"
+                            class="btn btn-outline auth-guest-button">
+
+                            <i class="fa-solid fa-compass"></i>
+
+                            Continue Exploring
+
+                        </a>
+
+
+                    </form>
+
+
+                    <!-- SIGNUP LINK -->
+                    <div class="auth-switch">
+
+                        <p>
+                            Don't have an account?
+
+                            <a href="signup.html">
+                                Create Account
+                            </a>
+                        </p>
+
+                    </div>
+
+
+                    <div class="auth-security-note">
+
+                        <i class="fa-solid fa-shield-halved"></i>
+
+                        <span>
+                            Your account information should be protected
+                            by secure server-side authentication.
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+        </div>
+
+    </main>
+
+
+    <!-- FOOTER -->
+    <footer class="auth-footer">
+
+        <div class="container">
+
+            <p>
+                © <span id="currentYear"></span> HotelSphere.
+                All rights reserved.
+            </p>
+
+            <p>
+                Discover. Stay. Experience.
+            </p>
+
+        </div>
+
+    </footer>
+
+
+    <!-- SCRIPTS -->
+    <script src="js/config.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/site.js"></script>
+    <script src="js/auth.js"></script>
+
+</body>
+</html>

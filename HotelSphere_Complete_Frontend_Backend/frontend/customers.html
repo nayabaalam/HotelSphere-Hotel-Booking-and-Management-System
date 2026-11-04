@@ -1,0 +1,330 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Customers | HotelSphere</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <script defer src="js/config.js"></script>
+    <script defer src="js/api.js"></script>
+    <script defer src="js/app.js"></script>
+</head>
+
+<body>
+
+<div class="dashboard-layout">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+
+        <a class="brand-logo" href="index.html">
+            <span class="brand-icon">H</span>
+
+            <span class="brand-info">
+                HotelSphere
+                <small>MANAGEMENT SUITE</small>
+            </span>
+        </a>
+
+        <div class="sidebar-section">
+            <p class="sidebar-heading">MAIN MENU</p>
+
+            <nav class="sidebar-nav">
+
+                <a class="nav-link" href="index.html">
+                    <span class="nav-icon">▦</span>
+                    Overview
+                </a>
+
+                <a class="nav-link" href="rooms.html">
+                    <span class="nav-icon">▤</span>
+                    Rooms
+                </a>
+
+                <a class="nav-link" href="bookings.html">
+                    <span class="nav-icon">▣</span>
+                    Bookings
+                </a>
+
+                <a class="nav-link active" href="customers.html">
+                    <span class="nav-icon">♙</span>
+                    Customers
+                </a>
+
+                <a class="nav-link" href="payments.html">
+                    <span class="nav-icon">₹</span>
+                    Payments
+                </a>
+
+                <a class="nav-link" href="reports.html">
+                    <span class="nav-icon">▥</span>
+                    Reports
+                </a>
+
+            </nav>
+        </div>
+
+        <div class="sidebar-bottom">
+
+            <div class="sidebar-support">
+                <span>✦</span>
+
+                <div>
+                    <strong>HotelSphere</strong>
+                    <small>Premium Management</small>
+                </div>
+            </div>
+
+            <div class="admin-profile">
+                <div class="admin-avatar">A</div>
+
+                <div>
+                    <strong>Administrator</strong>
+                    <small>Hotel Manager</small>
+                </div>
+            </div>
+
+        </div>
+
+    </aside>
+
+
+    <!-- MAIN CONTENT -->
+    <main class="main-content">
+
+        <!-- TOPBAR -->
+        <header class="topbar">
+
+            <div class="page-heading">
+                <span>GUEST RELATIONSHIPS</span>
+
+                <h1>Customer Management</h1>
+
+                <p>
+                    Manage guest profiles, contact information
+                    and loyalty records.
+                </p>
+            </div>
+
+            <div class="topbar-actions">
+
+                <div class="system-status">
+                    <span class="status-dot"></span>
+                    System Online
+                </div>
+
+                <div class="topbar-user">
+                    <div class="user-avatar">A</div>
+
+                    <div>
+                        <strong>Admin</strong>
+                        <small>Management</small>
+                    </div>
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <!-- HERO SECTION -->
+        <section class="hero-section">
+
+            <div class="hero-content">
+
+                <span class="hero-label">GUEST EXPERIENCE</span>
+
+                <h2>Every guest matters.<br>Every connection counts.</h2>
+
+                <p>
+                    Build lasting guest relationships with organized
+                    customer records and personalized hotel services.
+                </p>
+
+                <a href="#addCustomer" class="button">
+                    + Add New Customer
+                </a>
+
+            </div>
+
+            <div class="hero-image">
+
+                <div class="image-caption">
+                    <strong>Welcome to HotelSphere.</strong>
+                    <span>Where every stay feels special.</span>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ADD CUSTOMER -->
+        <section class="panel" id="addCustomer">
+
+            <div class="table-header">
+
+                <div>
+                    <span class="section-eyebrow">GUEST REGISTRATION</span>
+
+                    <h2>Add New Customer</h2>
+
+                    <p>
+                        Register a new guest in your hotel database.
+                    </p>
+                </div>
+
+                <span class="badge">New Guest</span>
+
+            </div>
+
+
+            <form id="customerForm" class="form one">
+
+                <label>
+                    <span>Full Name</span>
+
+                    <input
+                        type="text"
+                        id="customerName"
+                        placeholder="Enter customer's full name"
+                        autocomplete="name"
+                        required
+                    >
+                </label>
+
+
+                <label>
+                    <span>Email Address</span>
+
+                    <input
+                        type="email"
+                        id="customerEmail"
+                        placeholder="guest@example.com"
+                        autocomplete="email"
+                        required
+                    >
+                </label>
+
+
+                <label>
+                    <span>Phone Number</span>
+
+                    <input
+                        type="tel"
+                        id="customerPhone"
+                        placeholder="Enter phone number"
+                        autocomplete="tel"
+                    >
+                </label>
+
+
+                <div class="form-action">
+
+                    <button type="submit" class="button">
+                        Save Customer →
+                    </button>
+
+                    <p id="customerMessage" role="status"></p>
+
+                </div>
+
+            </form>
+
+        </section>
+
+
+        <!-- CUSTOMER DIRECTORY -->
+        <section class="panel">
+
+            <div class="table-header">
+
+                <div>
+                    <span class="section-eyebrow">CUSTOMER DATABASE</span>
+
+                    <h2>Guest Directory</h2>
+
+                    <p>
+                        Search and review registered hotel customers.
+                    </p>
+                </div>
+
+                <span class="badge">Guest Records</span>
+
+            </div>
+
+
+            <!-- SEARCH -->
+            <div class="customer-search-wrapper">
+
+                <span class="search-icon">⌕</span>
+
+                <input
+                    type="search"
+                    id="customerSearch"
+                    placeholder="Search by guest name, email or phone..."
+                    aria-label="Search customers"
+                >
+
+            </div>
+
+
+            <!-- CUSTOMER TABLE -->
+            <div class="tablewrap">
+
+                <table>
+
+                    <thead>
+                        <tr>
+                            <th>Customer</th>
+                            <th>Email Address</th>
+                            <th>Phone Number</th>
+                            <th>Loyalty Tier</th>
+                            <th>Loyalty Points</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="customersTable">
+
+                        <tr>
+                            <td colspan="5">
+                                Loading customer records...
+                            </td>
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+
+        <!-- FOOTER -->
+        <footer class="dashboard-footer">
+
+            <span>© 2026 HotelSphere Management Suite</span>
+
+            <span>Designed for smarter hotel operations.</span>
+
+        </footer>
+
+    </main>
+
+</div>
+
+
+<!-- TOAST NOTIFICATION -->
+<div id="toast" role="status" aria-live="polite"></div>
+
+</body>
+</html>

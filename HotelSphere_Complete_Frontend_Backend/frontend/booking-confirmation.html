@@ -1,0 +1,748 @@
+
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description"
+        content="HotelSphere booking confirmation and reservation details.">
+
+    <title>Booking Confirmation | HotelSphere</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@500;600;700&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <script>
+        (function () {
+            const theme = localStorage.getItem("hotelsphere-theme");
+
+            if (theme === "dark" || theme === "light") {
+                document.documentElement.setAttribute("data-theme", theme);
+            }
+        })();
+    </script>
+</head>
+
+<body class="confirmation-page">
+
+    <!-- HEADER -->
+    <header class="site-header">
+
+        <nav class="navbar container">
+
+            <a href="index.html" class="brand-logo">
+
+                <span class="brand-icon">
+                    <i class="fa-solid fa-hotel"></i>
+                </span>
+
+                <span class="brand-text">
+                    <strong>HotelSphere</strong>
+                    <small>STAY BEYOND EXPECTATIONS</small>
+                </span>
+
+            </a>
+
+
+            <div class="nav-actions">
+
+                <div class="checkout-secure-label">
+                    <i class="fa-solid fa-shield-halved"></i>
+                    Reservation Details
+                </div>
+
+                <button class="theme-toggle"
+                    id="themeToggle"
+                    type="button"
+                    aria-label="Switch theme">
+
+                    <i class="fa-solid fa-moon"></i>
+
+                </button>
+
+                <a href="index.html" class="btn btn-outline">
+                    <i class="fa-solid fa-house"></i>
+                    Home
+                </a>
+
+            </div>
+
+        </nav>
+
+    </header>
+
+
+    <!-- MAIN -->
+    <main class="confirmation-main">
+
+        <div class="container">
+
+
+            <!-- SUCCESS SECTION -->
+            <section class="confirmation-hero">
+
+                <div class="confirmation-success-icon">
+                    <i class="fa-solid fa-check"></i>
+                </div>
+
+                <span class="section-eyebrow">
+                    HOTELSPHERE RESERVATION
+                </span>
+
+                <h1 id="confirmationHeading">
+                    Thank You for Choosing HotelSphere!
+                </h1>
+
+                <p id="confirmationMessage">
+                    Your reservation details will appear here
+                    after the booking is successfully confirmed.
+                </p>
+
+
+                <div class="confirmation-status-area">
+
+                    <span class="status-label">
+                        Booking Status
+                    </span>
+
+                    <span class="status-badge"
+                        id="bookingStatus">
+
+                        <i class="fa-solid fa-clock"></i>
+                        Awaiting Verification
+
+                    </span>
+
+                </div>
+
+            </section>
+
+
+            <!-- BOOKING REFERENCE -->
+            <section class="booking-reference-card">
+
+                <div class="booking-reference-content">
+
+                    <div>
+
+                        <span class="reference-label">
+                            BOOKING REFERENCE NUMBER
+                        </span>
+
+                        <h2 id="confirmationBookingId">
+                            Pending
+                        </h2>
+
+                        <p>
+                            Keep this reference number for
+                            future booking enquiries.
+                        </p>
+
+                    </div>
+
+
+                    <button type="button"
+                        class="btn btn-outline"
+                        id="copyBookingId">
+
+                        <i class="fa-regular fa-copy"></i>
+                        Copy Reference
+
+                    </button>
+
+                </div>
+
+            </section>
+
+
+            <!-- MAIN CONTENT -->
+            <div class="confirmation-layout">
+
+
+                <!-- LEFT COLUMN -->
+                <section class="confirmation-details-column">
+
+
+                    <!-- HOTEL DETAILS -->
+                    <div class="checkout-card confirmation-card">
+
+                        <div class="checkout-card-heading">
+
+                            <div class="checkout-heading-icon">
+                                <i class="fa-solid fa-hotel"></i>
+                            </div>
+
+                            <div>
+
+                                <h2>Your Reservation</h2>
+
+                                <p>
+                                    Review your hotel and stay details.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="confirmation-hotel-details">
+
+                            <div class="confirmation-hotel-image">
+
+                                <img
+                                    src="https://images.unsplash.com/photo-1611892440504-42a792e24d32?auto=format&fit=crop&w=900&q=85"
+                                    alt="HotelSphere deluxe room">
+
+                            </div>
+
+
+                            <div class="confirmation-hotel-info">
+
+                                <span class="section-eyebrow">
+                                    HOTELSPHERE COLLECTION
+                                </span>
+
+                                <h3 id="confirmedHotelName">
+                                    HotelSphere Central
+                                </h3>
+
+                                <p id="confirmedHotelAddress">
+                                    Hotel address will appear here.
+                                </p>
+
+                                <div class="summary-room-rating">
+
+                                    <i class="fa-solid fa-star"></i>
+
+                                    <strong>4.8</strong>
+
+                                    <span>Guest Rating</span>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- ROOM -->
+                        <div class="confirmation-room-info">
+
+                            <div>
+
+                                <span>ROOM TYPE</span>
+
+                                <strong id="confirmedRoomName">
+                                    Deluxe Comfort Room
+                                </strong>
+
+                            </div>
+
+
+                            <div>
+
+                                <span>ROOM NUMBER</span>
+
+                                <strong id="confirmedRoomNumber">
+                                    Assigned at Check-in
+                                </strong>
+
+                            </div>
+
+
+                            <div>
+
+                                <span>NUMBER OF GUESTS</span>
+
+                                <strong id="confirmedGuests">
+                                    2 Adults
+                                </strong>
+
+                            </div>
+
+
+                            <div>
+
+                                <span>NUMBER OF NIGHTS</span>
+
+                                <strong id="confirmedNights">
+                                    0 Nights
+                                </strong>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- DATES -->
+                        <div class="confirmation-dates">
+
+                            <div class="confirmation-date-box">
+
+                                <span>
+                                    <i class="fa-solid fa-right-to-bracket"></i>
+                                    CHECK-IN
+                                </span>
+
+                                <h3 id="confirmedCheckIn">
+                                    Date Pending
+                                </h3>
+
+                                <p>From 12:00 PM</p>
+
+                            </div>
+
+
+                            <div class="confirmation-date-divider">
+                                <i class="fa-solid fa-arrow-right"></i>
+                            </div>
+
+
+                            <div class="confirmation-date-box">
+
+                                <span>
+                                    <i class="fa-solid fa-right-from-bracket"></i>
+                                    CHECK-OUT
+                                </span>
+
+                                <h3 id="confirmedCheckOut">
+                                    Date Pending
+                                </h3>
+
+                                <p>Before 11:00 AM</p>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- GUEST DETAILS -->
+                    <div class="checkout-card confirmation-card">
+
+                        <div class="checkout-card-heading">
+
+                            <div class="checkout-heading-icon">
+                                <i class="fa-solid fa-user"></i>
+                            </div>
+
+                            <div>
+
+                                <h2>Guest Details</h2>
+
+                                <p>
+                                    Primary guest information.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="confirmation-guest-grid">
+
+                            <div>
+
+                                <span>GUEST NAME</span>
+
+                                <strong id="confirmedGuestName">
+                                    Guest Name
+                                </strong>
+
+                            </div>
+
+
+                            <div>
+
+                                <span>EMAIL ADDRESS</span>
+
+                                <strong id="confirmedGuestEmail">
+                                    Not Available
+                                </strong>
+
+                            </div>
+
+
+                            <div>
+
+                                <span>MOBILE NUMBER</span>
+
+                                <strong id="confirmedGuestPhone">
+                                    Not Available
+                                </strong>
+
+                            </div>
+
+
+                            <div>
+
+                                <span>BOOKING DATE</span>
+
+                                <strong id="confirmedBookingDate">
+                                    Not Available
+                                </strong>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- PAYMENT DETAILS -->
+                    <div class="checkout-card confirmation-card">
+
+                        <div class="checkout-card-heading">
+
+                            <div class="checkout-heading-icon">
+                                <i class="fa-solid fa-wallet"></i>
+                            </div>
+
+                            <div>
+
+                                <h2>Payment Information</h2>
+
+                                <p>
+                                    Your reservation payment summary.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="confirmation-payment-list">
+
+                            <div>
+
+                                <span>Payment Method</span>
+
+                                <strong id="confirmedPaymentMethod">
+                                    Not Available
+                                </strong>
+
+                            </div>
+
+
+                            <div>
+
+                                <span>Payment Reference</span>
+
+                                <strong id="confirmedPaymentReference">
+                                    Not Available
+                                </strong>
+
+                            </div>
+
+
+                            <div>
+
+                                <span>Payment Status</span>
+
+                                <strong id="confirmedPaymentStatus">
+                                    Awaiting Verification
+                                </strong>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="confirmation-total">
+
+                            <span>Total Booking Amount</span>
+
+                            <strong id="confirmedTotal">
+                                ₹0
+                            </strong>
+
+                        </div>
+
+
+                        <div class="confirmation-balance">
+
+                            <span>Remaining Balance</span>
+
+                            <strong id="confirmedBalance">
+                                ₹0
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- SPECIAL REQUESTS -->
+                    <div class="checkout-card confirmation-card">
+
+                        <div class="checkout-card-heading">
+
+                            <div class="checkout-heading-icon">
+                                <i class="fa-solid fa-clipboard-list"></i>
+                            </div>
+
+                            <div>
+
+                                <h2>Special Requests</h2>
+
+                                <p>
+                                    Additional information provided
+                                    with your reservation.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <p id="confirmedSpecialRequest"
+                            class="confirmation-special-request">
+
+                            No special requests provided.
+
+                        </p>
+
+                    </div>
+
+
+                </section>
+
+
+                <!-- RIGHT COLUMN -->
+                <aside class="confirmation-sidebar">
+
+
+                    <!-- NEXT STEPS -->
+                    <div class="checkout-card next-steps-card">
+
+                        <h2>What's Next?</h2>
+
+                        <p>
+                            A few things to prepare for your stay.
+                        </p>
+
+
+                        <div class="next-step-item">
+
+                            <span class="next-step-icon">
+                                <i class="fa-solid fa-envelope"></i>
+                            </span>
+
+                            <div>
+
+                                <h3>Check Your Email</h3>
+
+                                <p>
+                                    Check your registered email
+                                    for booking updates and
+                                    confirmation details.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="next-step-item">
+
+                            <span class="next-step-icon">
+                                <i class="fa-solid fa-id-card"></i>
+                            </span>
+
+                            <div>
+
+                                <h3>Carry Valid ID</h3>
+
+                                <p>
+                                    Keep valid identification
+                                    documents ready for hotel
+                                    check-in.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="next-step-item">
+
+                            <span class="next-step-icon">
+                                <i class="fa-solid fa-clock"></i>
+                            </span>
+
+                            <div>
+
+                                <h3>Arrival Time</h3>
+
+                                <p>
+                                    Standard check-in starts at
+                                    12:00 PM. Confirm special
+                                    arrangements with the hotel.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="next-step-item">
+
+                            <span class="next-step-icon">
+                                <i class="fa-solid fa-file-invoice"></i>
+                            </span>
+
+                            <div>
+
+                                <h3>Keep Your Booking ID</h3>
+
+                                <p>
+                                    Save your booking reference
+                                    to help the hotel locate
+                                    your reservation.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- ACTIONS -->
+                    <div class="checkout-card confirmation-actions-card">
+
+                        <h2>Manage Your Reservation</h2>
+
+
+                        <button type="button"
+                            class="btn btn-primary confirmation-action-btn"
+                            id="downloadInvoiceButton">
+
+                            <i class="fa-solid fa-file-invoice"></i>
+                            Download Invoice
+
+                        </button>
+
+
+                        <button type="button"
+                            class="btn btn-outline confirmation-action-btn"
+                            id="printConfirmationButton">
+
+                            <i class="fa-solid fa-print"></i>
+                            Print Confirmation
+
+                        </button>
+
+
+                        <a href="my-bookings.html"
+                            class="btn btn-outline confirmation-action-btn">
+
+                            <i class="fa-solid fa-calendar-check"></i>
+                            View My Bookings
+
+                        </a>
+
+
+                        <a href="explore.html"
+                            class="btn btn-outline confirmation-action-btn">
+
+                            <i class="fa-solid fa-bed"></i>
+                            Explore More Rooms
+
+                        </a>
+
+                    </div>
+
+
+                    <!-- SUPPORT -->
+                    <div class="checkout-support-card">
+
+                        <i class="fa-solid fa-headset"></i>
+
+                        <div>
+
+                            <h3>We're Here to Help</h3>
+
+                            <p>
+                                Need to make changes or have
+                                questions about your stay?
+                            </p>
+
+                            <a href="mailto:support@hotelsphere.com">
+                                Contact Support
+                            </a>
+
+                        </div>
+
+                    </div>
+
+
+                </aside>
+
+            </div>
+
+
+            <!-- FOOTER MESSAGE -->
+            <section class="confirmation-thank-you">
+
+                <i class="fa-solid fa-heart"></i>
+
+                <h2>We Look Forward to Welcoming You!</h2>
+
+                <p>
+                    Thank you for choosing HotelSphere.
+                    We hope you have a wonderful stay.
+                </p>
+
+            </section>
+
+
+        </div>
+
+    </main>
+
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+
+        <div class="container">
+
+            <div class="footer-bottom">
+
+                <p>
+                    © <span id="currentYear"></span> HotelSphere.
+                    All rights reserved.
+                </p>
+
+                <p>
+                    <i class="fa-solid fa-shield-halved"></i>
+                    Your Stay, Our Priority
+                </p>
+
+            </div>
+
+        </div>
+
+    </footer>
+
+
+    <!-- SCRIPTS -->
+    <script src="js/config.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/site.js"></script>
+    <script src="js/confirmation.js"></script>
+
+</body>
+</html>

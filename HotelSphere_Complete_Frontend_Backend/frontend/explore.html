@@ -1,0 +1,1130 @@
+
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description"
+        content="Explore premium hotels and luxury rooms with HotelSphere.">
+
+    <title>Explore Hotels | HotelSphere</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@500;600;700&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <script>
+        (function () {
+            const theme = localStorage.getItem("hotelsphere-theme");
+
+            if (theme === "dark" || theme === "light") {
+                document.documentElement.setAttribute("data-theme", theme);
+            }
+        })();
+    </script>
+</head>
+
+<body>
+
+    <!-- ANNOUNCEMENT -->
+    <div class="announcement-bar">
+        <p>
+            <i class="fa-solid fa-sparkles"></i>
+            Discover your perfect stay with HotelSphere.
+        </p>
+    </div>
+
+
+    <!-- HEADER -->
+    <header class="site-header">
+
+        <nav class="navbar container">
+
+            <a href="index.html" class="brand-logo">
+
+                <span class="brand-icon">
+                    <i class="fa-solid fa-hotel"></i>
+                </span>
+
+                <span class="brand-text">
+                    <strong>HotelSphere</strong>
+                    <small>STAY BEYOND EXPECTATIONS</small>
+                </span>
+
+            </a>
+
+
+            <button class="mobile-menu-toggle"
+                id="mobileMenuToggle"
+                aria-label="Open navigation"
+                aria-expanded="false">
+
+                <i class="fa-solid fa-bars"></i>
+
+            </button>
+
+
+            <div class="nav-menu" id="navMenu">
+
+                <a href="index.html" class="nav-link">Home</a>
+
+                <a href="explore.html" class="nav-link active">
+                    Explore Hotels
+                </a>
+
+                <a href="#rooms" class="nav-link">Rooms</a>
+
+                <a href="my-bookings.html" class="nav-link">
+                    My Bookings
+                </a>
+
+                <div class="nav-actions">
+
+                    <button class="theme-toggle"
+                        id="themeToggle"
+                        type="button"
+                        aria-label="Switch theme">
+
+                        <i class="fa-solid fa-moon"></i>
+
+                    </button>
+
+                    <a href="login.html" class="btn btn-outline">
+                        Sign In
+                    </a>
+
+                    <a href="signup.html" class="btn btn-primary">
+                        Join Now
+                    </a>
+
+                </div>
+
+            </div>
+
+        </nav>
+
+    </header>
+
+
+    <main>
+
+        <!-- PAGE HERO -->
+        <section class="explore-hero">
+
+            <div class="explore-hero-background"></div>
+
+            <div class="explore-hero-overlay"></div>
+
+            <div class="container explore-hero-content">
+
+                <span class="section-eyebrow">
+                    EXPLORE · DISCOVER · EXPERIENCE
+                </span>
+
+                <h1>
+                    Find Your Perfect
+                    <span>Place to Stay.</span>
+                </h1>
+
+                <p>
+                    Explore beautiful hotels, discover exceptional rooms
+                    and choose the perfect stay for your journey.
+                </p>
+
+                <div class="explore-date-time">
+
+                    <i class="fa-regular fa-calendar-days"></i>
+
+                    <span id="currentDate">Loading date...</span>
+
+                    <span class="datetime-separator">|</span>
+
+                    <i class="fa-regular fa-clock"></i>
+
+                    <strong id="currentTime">--:--:--</strong>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- SEARCH AND FILTER -->
+        <section class="explore-search-section">
+
+            <div class="container">
+
+                <form class="explore-search-form" id="exploreSearchForm">
+
+                    <div class="search-field">
+
+                        <label for="hotelSearch">
+                            <i class="fa-solid fa-location-dot"></i>
+                            Hotel or Destination
+                        </label>
+
+                        <input
+                            type="search"
+                            id="hotelSearch"
+                            placeholder="Search hotel or location">
+
+                    </div>
+
+
+                    <div class="search-field">
+
+                        <label for="exploreCheckIn">
+                            <i class="fa-regular fa-calendar-check"></i>
+                            Check In
+                        </label>
+
+                        <input
+                            type="date"
+                            id="exploreCheckIn"
+                            required>
+
+                    </div>
+
+
+                    <div class="search-field">
+
+                        <label for="exploreCheckOut">
+                            <i class="fa-regular fa-calendar-xmark"></i>
+                            Check Out
+                        </label>
+
+                        <input
+                            type="date"
+                            id="exploreCheckOut"
+                            required>
+
+                    </div>
+
+
+                    <div class="search-field">
+
+                        <label for="exploreGuests">
+                            <i class="fa-solid fa-users"></i>
+                            Guests
+                        </label>
+
+                        <select id="exploreGuests">
+
+                            <option value="1">1 Guest</option>
+                            <option value="2" selected>2 Guests</option>
+                            <option value="3">3 Guests</option>
+                            <option value="4">4 Guests</option>
+                            <option value="5">5 Guests</option>
+                            <option value="6">6 Guests</option>
+
+                        </select>
+
+                    </div>
+
+
+                    <button type="submit" class="btn btn-primary search-submit">
+
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        Search
+
+                    </button>
+
+                </form>
+
+            </div>
+
+        </section>
+
+
+        <!-- MAIN EXPLORE CONTENT -->
+        <section class="section explore-listing-section" id="rooms">
+
+            <div class="container">
+
+                <div class="section-heading">
+
+                    <div>
+
+                        <span class="section-eyebrow">
+                            OUR COLLECTION
+                        </span>
+
+                        <h2>Explore Hotels & Rooms</h2>
+
+                        <p>
+                            Discover spaces designed for comfort,
+                            relaxation and memorable experiences.
+                        </p>
+
+                    </div>
+
+                    <div class="listing-count">
+
+                        <i class="fa-solid fa-hotel"></i>
+
+                        <span id="resultCount">
+                            Featured Properties
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <!-- FILTER BAR -->
+                <div class="filter-toolbar">
+
+                    <div class="filter-categories">
+
+                        <button class="filter-chip active"
+                            type="button"
+                            data-category="all">
+
+                            <i class="fa-solid fa-border-all"></i>
+                            All Rooms
+
+                        </button>
+
+                        <button class="filter-chip"
+                            type="button"
+                            data-category="standard">
+
+                            Standard
+
+                        </button>
+
+                        <button class="filter-chip"
+                            type="button"
+                            data-category="deluxe">
+
+                            Deluxe
+
+                        </button>
+
+                        <button class="filter-chip"
+                            type="button"
+                            data-category="premium">
+
+                            Premium
+
+                        </button>
+
+                        <button class="filter-chip"
+                            type="button"
+                            data-category="suite">
+
+                            Luxury Suite
+
+                        </button>
+
+                    </div>
+
+
+                    <div class="sort-control">
+
+                        <label for="sortRooms">Sort By:</label>
+
+                        <select id="sortRooms">
+
+                            <option value="recommended">
+                                Recommended
+                            </option>
+
+                            <option value="low">
+                                Price: Low to High
+                            </option>
+
+                            <option value="high">
+                                Price: High to Low
+                            </option>
+
+                            <option value="name">
+                                Name: A to Z
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+
+                <!-- ROOM RESULTS -->
+                <div class="room-grid explore-room-grid"
+                    id="exploreRoomGrid">
+
+
+                    <!-- ROOM 1 -->
+                    <article class="room-card"
+                        data-category="standard"
+                        data-price="2200"
+                        data-name="Standard Comfort Room">
+
+                        <div class="room-image">
+
+                            <img
+                                src="https://images.unsplash.com/photo-1611892440504-42a792e24d32?auto=format&fit=crop&w=900&q=85"
+                                alt="Standard hotel bedroom"
+                                loading="lazy">
+
+                            <span class="room-tag">
+                                Great Value
+                            </span>
+
+                            <button class="favorite-button"
+                                type="button"
+                                aria-label="Add Standard Room to favourites">
+
+                                <i class="fa-regular fa-heart"></i>
+
+                            </button>
+
+                        </div>
+
+                        <div class="room-content">
+
+                            <div class="room-category">
+                                STANDARD COLLECTION
+                            </div>
+
+                            <h3>Standard Comfort Room</h3>
+
+                            <p>
+                                A comfortable and welcoming space
+                                for everyday travellers.
+                            </p>
+
+                            <div class="room-facilities">
+
+                                <span>
+                                    <i class="fa-solid fa-user-group"></i>
+                                    2 Guests
+                                </span>
+
+                                <span>
+                                    <i class="fa-solid fa-bed"></i>
+                                    Queen Bed
+                                </span>
+
+                                <span>
+                                    <i class="fa-solid fa-wifi"></i>
+                                    Wi-Fi
+                                </span>
+
+                            </div>
+
+                            <div class="room-footer">
+
+                                <div class="room-price">
+
+                                    <strong>₹2,200</strong>
+
+                                    <span>/ night</span>
+
+                                </div>
+
+                                <a href="room-details.html"
+                                    class="btn btn-primary">
+
+                                    View Details
+
+                                </a>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- ROOM 2 -->
+                    <article class="room-card"
+                        data-category="deluxe"
+                        data-price="2800"
+                        data-name="Deluxe Garden Room">
+
+                        <div class="room-image">
+
+                            <img
+                                src="https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=900&q=85"
+                                alt="Deluxe hotel room"
+                                loading="lazy">
+
+                            <span class="room-tag room-tag-purple">
+                                Guest Favourite
+                            </span>
+
+                            <button class="favorite-button"
+                                type="button"
+                                aria-label="Add Deluxe Room to favourites">
+
+                                <i class="fa-regular fa-heart"></i>
+
+                            </button>
+
+                        </div>
+
+                        <div class="room-content">
+
+                            <div class="room-category">
+                                DELUXE COLLECTION
+                            </div>
+
+                            <h3>Deluxe Garden Room</h3>
+
+                            <p>
+                                Enjoy elegant interiors and a relaxing
+                                atmosphere.
+                            </p>
+
+                            <div class="room-facilities">
+
+                                <span>
+                                    <i class="fa-solid fa-user-group"></i>
+                                    2 Guests
+                                </span>
+
+                                <span>
+                                    <i class="fa-solid fa-bed"></i>
+                                    King Bed
+                                </span>
+
+                                <span>
+                                    <i class="fa-solid fa-wifi"></i>
+                                    Wi-Fi
+                                </span>
+
+                            </div>
+
+                            <div class="room-footer">
+
+                                <div class="room-price">
+
+                                    <strong>₹2,800</strong>
+
+                                    <span>/ night</span>
+
+                                </div>
+
+                                <a href="room-details.html"
+                                    class="btn btn-primary">
+
+                                    View Details
+
+                                </a>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- ROOM 3 -->
+                    <article class="room-card"
+                        data-category="premium"
+                        data-price="3500"
+                        data-name="Premium Executive Room">
+
+                        <div class="room-image">
+
+                            <img
+                                src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=900&q=85"
+                                alt="Premium executive hotel room"
+                                loading="lazy">
+
+                            <span class="room-tag room-tag-gold">
+                                Premium
+                            </span>
+
+                            <button class="favorite-button"
+                                type="button"
+                                aria-label="Add Premium Room to favourites">
+
+                                <i class="fa-regular fa-heart"></i>
+
+                            </button>
+
+                        </div>
+
+                        <div class="room-content">
+
+                            <div class="room-category">
+                                PREMIUM COLLECTION
+                            </div>
+
+                            <h3>Premium Executive Room</h3>
+
+                            <p>
+                                A spacious environment with refined
+                                comfort and modern facilities.
+                            </p>
+
+                            <div class="room-facilities">
+
+                                <span>
+                                    <i class="fa-solid fa-user-group"></i>
+                                    3 Guests
+                                </span>
+
+                                <span>
+                                    <i class="fa-solid fa-bed"></i>
+                                    King Bed
+                                </span>
+
+                                <span>
+                                    <i class="fa-solid fa-wifi"></i>
+                                    Wi-Fi
+                                </span>
+
+                            </div>
+
+                            <div class="room-footer">
+
+                                <div class="room-price">
+
+                                    <strong>₹3,500</strong>
+
+                                    <span>/ night</span>
+
+                                </div>
+
+                                <a href="room-details.html"
+                                    class="btn btn-primary">
+
+                                    View Details
+
+                                </a>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- ROOM 4 -->
+                    <article class="room-card"
+                        data-category="suite"
+                        data-price="5500"
+                        data-name="Luxury Royal Suite">
+
+                        <div class="room-image">
+
+                            <img
+                                src="https://images.unsplash.com/photo-1564013799919-ab600027ffc6?auto=format&fit=crop&w=900&q=85"
+                                alt="Luxury royal hotel suite"
+                                loading="lazy">
+
+                            <span class="room-tag room-tag-gold">
+                                Luxury
+                            </span>
+
+                            <button class="favorite-button"
+                                type="button"
+                                aria-label="Add Royal Suite to favourites">
+
+                                <i class="fa-regular fa-heart"></i>
+
+                            </button>
+
+                        </div>
+
+                        <div class="room-content">
+
+                            <div class="room-category">
+                                LUXURY COLLECTION
+                            </div>
+
+                            <h3>Luxury Royal Suite</h3>
+
+                            <p>
+                                A premium suite for guests who love
+                                exceptional comfort.
+                            </p>
+
+                            <div class="room-facilities">
+
+                                <span>
+                                    <i class="fa-solid fa-user-group"></i>
+                                    4 Guests
+                                </span>
+
+                                <span>
+                                    <i class="fa-solid fa-bed"></i>
+                                    King Bed
+                                </span>
+
+                                <span>
+                                    <i class="fa-solid fa-wifi"></i>
+                                    Wi-Fi
+                                </span>
+
+                            </div>
+
+                            <div class="room-footer">
+
+                                <div class="room-price">
+
+                                    <strong>₹5,500</strong>
+
+                                    <span>/ night</span>
+
+                                </div>
+
+                                <a href="room-details.html"
+                                    class="btn btn-primary">
+
+                                    View Details
+
+                                </a>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- ROOM 5 -->
+                    <article class="room-card"
+                        data-category="deluxe"
+                        data-price="3200"
+                        data-name="Deluxe City View Room">
+
+                        <div class="room-image">
+
+                            <img
+                                src="https://images.unsplash.com/photo-1591088398332-8a7791972843?auto=format&fit=crop&w=900&q=85"
+                                alt="Deluxe room with city view"
+                                loading="lazy">
+
+                            <span class="room-tag">
+                                City View
+                            </span>
+
+                            <button class="favorite-button"
+                                type="button"
+                                aria-label="Add City View Room to favourites">
+
+                                <i class="fa-regular fa-heart"></i>
+
+                            </button>
+
+                        </div>
+
+                        <div class="room-content">
+
+                            <div class="room-category">
+                                DELUXE COLLECTION
+                            </div>
+
+                            <h3>Deluxe City View Room</h3>
+
+                            <p>
+                                Enjoy modern interiors and beautiful
+                                city surroundings.
+                            </p>
+
+                            <div class="room-facilities">
+
+                                <span>
+                                    <i class="fa-solid fa-user-group"></i>
+                                    2 Guests
+                                </span>
+
+                                <span>
+                                    <i class="fa-solid fa-bed"></i>
+                                    Queen Bed
+                                </span>
+
+                                <span>
+                                    <i class="fa-solid fa-wifi"></i>
+                                    Wi-Fi
+                                </span>
+
+                            </div>
+
+                            <div class="room-footer">
+
+                                <div class="room-price">
+
+                                    <strong>₹3,200</strong>
+
+                                    <span>/ night</span>
+
+                                </div>
+
+                                <a href="room-details.html"
+                                    class="btn btn-primary">
+
+                                    View Details
+
+                                </a>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- ROOM 6 -->
+                    <article class="room-card"
+                        data-category="suite"
+                        data-price="6500"
+                        data-name="Presidential Suite">
+
+                        <div class="room-image">
+
+                            <img
+                                src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=900&q=85"
+                                alt="Presidential luxury hotel suite"
+                                loading="lazy">
+
+                            <span class="room-tag room-tag-purple">
+                                Exclusive
+                            </span>
+
+                            <button class="favorite-button"
+                                type="button"
+                                aria-label="Add Presidential Suite to favourites">
+
+                                <i class="fa-regular fa-heart"></i>
+
+                            </button>
+
+                        </div>
+
+                        <div class="room-content">
+
+                            <div class="room-category">
+                                SIGNATURE COLLECTION
+                            </div>
+
+                            <h3>Presidential Suite</h3>
+
+                            <p>
+                                An elevated luxury experience with
+                                generous living space.
+                            </p>
+
+                            <div class="room-facilities">
+
+                                <span>
+                                    <i class="fa-solid fa-user-group"></i>
+                                    4 Guests
+                                </span>
+
+                                <span>
+                                    <i class="fa-solid fa-bed"></i>
+                                    King Bed
+                                </span>
+
+                                <span>
+                                    <i class="fa-solid fa-wifi"></i>
+                                    Wi-Fi
+                                </span>
+
+                            </div>
+
+                            <div class="room-footer">
+
+                                <div class="room-price">
+
+                                    <strong>₹6,500</strong>
+
+                                    <span>/ night</span>
+
+                                </div>
+
+                                <a href="room-details.html"
+                                    class="btn btn-primary">
+
+                                    View Details
+
+                                </a>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+                </div>
+
+
+                <!-- EMPTY STATE -->
+                <div class="empty-state" id="emptyState" hidden>
+
+                    <i class="fa-solid fa-hotel"></i>
+
+                    <h3>No matching rooms found</h3>
+
+                    <p>
+                        Try another category or change your search.
+                    </p>
+
+                    <button type="button"
+                        class="btn btn-primary"
+                        id="resetFilters">
+
+                        Reset Filters
+
+                    </button>
+
+                </div>
+
+
+                <p class="demo-note">
+
+                    <i class="fa-solid fa-circle-info"></i>
+
+                    These are illustrative room cards and sample prices.
+                    Actual room inventory, photographs, availability and
+                    rates will be connected to the HotelSphere database.
+
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- WHY CHOOSE US -->
+        <section class="section facilities-section">
+
+            <div class="container">
+
+                <div class="section-heading centered">
+
+                    <div>
+
+                        <span class="section-eyebrow">
+                            WHY HOTELSPHERE
+                        </span>
+
+                        <h2>A Better Way to Discover Your Stay</h2>
+
+                        <p>
+                            Everything you need for a convenient
+                            hotel booking experience.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="facilities-grid">
+
+                    <div class="facility-card">
+
+                        <div class="facility-icon blue">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                        </div>
+
+                        <h3>Easy Discovery</h3>
+
+                        <p>
+                            Explore rooms and find the right stay.
+                        </p>
+
+                    </div>
+
+
+                    <div class="facility-card">
+
+                        <div class="facility-icon purple">
+                            <i class="fa-solid fa-calendar-check"></i>
+                        </div>
+
+                        <h3>Simple Booking</h3>
+
+                        <p>
+                            Manage your preferred booking dates.
+                        </p>
+
+                    </div>
+
+
+                    <div class="facility-card">
+
+                        <div class="facility-icon green">
+                            <i class="fa-solid fa-shield-halved"></i>
+                        </div>
+
+                        <h3>Reliable Experience</h3>
+
+                        <p>
+                            Clear booking details and guest information.
+                        </p>
+
+                    </div>
+
+
+                    <div class="facility-card">
+
+                        <div class="facility-icon orange">
+                            <i class="fa-solid fa-headset"></i>
+                        </div>
+
+                        <h3>Guest Assistance</h3>
+
+                        <p>
+                            A convenient experience throughout your journey.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- CTA -->
+        <section class="cta-section">
+
+            <div class="container cta-content">
+
+                <div>
+
+                    <span class="section-eyebrow">
+                        YOUR NEXT STAY IS WAITING
+                    </span>
+
+                    <h2>Make Your Next Journey Special.</h2>
+
+                    <p>
+                        Find your ideal room and start planning your stay.
+                    </p>
+
+                </div>
+
+                <a href="signup.html" class="btn btn-light btn-large">
+                    Create Your Account
+                    <i class="fa-solid fa-arrow-right"></i>
+                </a>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+
+        <div class="container footer-grid">
+
+            <div class="footer-brand">
+
+                <a href="index.html" class="brand-logo">
+
+                    <span class="brand-icon">
+                        <i class="fa-solid fa-hotel"></i>
+                    </span>
+
+                    <span class="brand-text">
+                        <strong>HotelSphere</strong>
+                        <small>STAY BEYOND EXPECTATIONS</small>
+                    </span>
+
+                </a>
+
+                <p>
+                    Discover better stays and memorable hospitality
+                    with HotelSphere.
+                </p>
+
+                <div class="social-links">
+
+                    <a href="#" aria-label="Facebook">
+                        <i class="fa-brands fa-facebook-f"></i>
+                    </a>
+
+                    <a href="#" aria-label="Instagram">
+                        <i class="fa-brands fa-instagram"></i>
+                    </a>
+
+                    <a href="#" aria-label="LinkedIn">
+                        <i class="fa-brands fa-linkedin-in"></i>
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <div class="footer-column">
+
+                <h3>Explore</h3>
+
+                <a href="index.html">Home</a>
+                <a href="explore.html">Hotels</a>
+                <a href="my-bookings.html">My Bookings</a>
+
+            </div>
+
+
+            <div class="footer-column">
+
+                <h3>Account</h3>
+
+                <a href="login.html">Sign In</a>
+                <a href="signup.html">Create Account</a>
+
+            </div>
+
+
+            <div class="footer-column">
+
+                <h3>Management</h3>
+
+                <a href="admin-dashboard.html">Admin Dashboard</a>
+                <a href="rooms.html">Room Management</a>
+                <a href="bookings.html">Bookings</a>
+                <a href="reports.html">Reports</a>
+
+            </div>
+
+        </div>
+
+
+        <div class="footer-bottom container">
+
+            <p>
+                © <span id="currentYear"></span> HotelSphere.
+                All rights reserved.
+            </p>
+
+            <p>Discover. Stay. Experience.</p>
+
+        </div>
+
+    </footer>
+
+
+    <!-- SCRIPTS -->
+    <script src="js/config.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/site.js"></script>
+    <script src="js/explore.js"></script>
+    <script src="js/favorites.js"></script>
+
+</body>
+</html>

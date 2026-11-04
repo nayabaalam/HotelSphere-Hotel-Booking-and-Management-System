@@ -1,0 +1,615 @@
+
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description"
+        content="Manage your HotelSphere reservations and booking history.">
+
+    <title>My Bookings | HotelSphere</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@500;600;700&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <script>
+        (function () {
+            const theme = localStorage.getItem("hotelsphere-theme");
+
+            if (theme === "dark" || theme === "light") {
+                document.documentElement.setAttribute("data-theme", theme);
+            }
+        })();
+    </script>
+</head>
+
+<body class="customer-dashboard-page">
+
+    <!-- HEADER -->
+    <header class="site-header">
+
+        <nav class="navbar container">
+
+            <a href="index.html" class="brand-logo">
+
+                <span class="brand-icon">
+                    <i class="fa-solid fa-hotel"></i>
+                </span>
+
+                <span class="brand-text">
+                    <strong>HotelSphere</strong>
+                    <small>STAY BEYOND EXPECTATIONS</small>
+                </span>
+
+            </a>
+
+
+            <div class="nav-links">
+
+                <a href="index.html">Home</a>
+
+                <a href="explore.html">Explore Hotels</a>
+
+                <a href="explore.html">Rooms</a>
+
+                <a href="my-bookings.html" class="active">
+                    My Bookings
+                </a>
+
+            </div>
+
+
+            <div class="nav-actions">
+
+                <button class="theme-toggle"
+                    id="themeToggle"
+                    type="button"
+                    aria-label="Switch theme">
+
+                    <i class="fa-solid fa-moon"></i>
+
+                </button>
+
+                <a href="login.html" class="btn btn-outline">
+                    <i class="fa-regular fa-user"></i>
+                    Sign In
+                </a>
+
+            </div>
+
+        </nav>
+
+    </header>
+
+
+    <main class="customer-dashboard-main">
+
+        <div class="container">
+
+
+            <!-- PAGE HEADING -->
+            <section class="dashboard-welcome">
+
+                <div>
+
+                    <span class="section-eyebrow">
+                        CUSTOMER DASHBOARD
+                    </span>
+
+                    <h1>My Bookings</h1>
+
+                    <p>
+                        Manage your reservations and keep track
+                        of your hotel experiences.
+                    </p>
+
+                </div>
+
+
+                <div class="dashboard-date-time">
+
+                    <div>
+                        <i class="fa-regular fa-calendar"></i>
+                        <span id="currentDate">Loading date...</span>
+                    </div>
+
+                    <div>
+                        <i class="fa-regular fa-clock"></i>
+                        <strong id="currentTime">--:--:--</strong>
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- BOOKING STATISTICS -->
+            <section class="booking-stat-grid">
+
+                <article class="booking-stat-card">
+
+                    <div class="stat-icon purple">
+                        <i class="fa-solid fa-calendar-check"></i>
+                    </div>
+
+                    <div>
+                        <span>Total Bookings</span>
+                        <h2 id="totalBookings">--</h2>
+                        <small>All reservations</small>
+                    </div>
+
+                </article>
+
+
+                <article class="booking-stat-card">
+
+                    <div class="stat-icon blue">
+                        <i class="fa-solid fa-suitcase-rolling"></i>
+                    </div>
+
+                    <div>
+                        <span>Upcoming</span>
+                        <h2 id="upcomingBookings">--</h2>
+                        <small>Future stays</small>
+                    </div>
+
+                </article>
+
+
+                <article class="booking-stat-card">
+
+                    <div class="stat-icon green">
+                        <i class="fa-solid fa-circle-check"></i>
+                    </div>
+
+                    <div>
+                        <span>Completed</span>
+                        <h2 id="completedBookings">--</h2>
+                        <small>Past stays</small>
+                    </div>
+
+                </article>
+
+
+                <article class="booking-stat-card">
+
+                    <div class="stat-icon orange">
+                        <i class="fa-solid fa-ban"></i>
+                    </div>
+
+                    <div>
+                        <span>Cancelled</span>
+                        <h2 id="cancelledBookings">--</h2>
+                        <small>Cancelled reservations</small>
+                    </div>
+
+                </article>
+
+            </section>
+
+
+            <!-- BOOKING TOOLBAR -->
+            <section class="booking-management-section">
+
+                <div class="booking-section-heading">
+
+                    <div>
+
+                        <h2>Your Reservations</h2>
+
+                        <p>
+                            View and manage all your hotel bookings.
+                        </p>
+
+                    </div>
+
+                    <a href="explore.html" class="btn btn-primary">
+
+                        <i class="fa-solid fa-plus"></i>
+
+                        Book a Room
+
+                    </a>
+
+                </div>
+
+
+                <!-- FILTERS -->
+                <div class="booking-toolbar">
+
+                    <div class="booking-search">
+
+                        <i class="fa-solid fa-magnifying-glass"></i>
+
+                        <input
+                            type="search"
+                            id="bookingSearch"
+                            placeholder="Search booking ID or room..."
+                            aria-label="Search bookings">
+
+                    </div>
+
+
+                    <div class="booking-filters">
+
+                        <select id="bookingStatusFilter"
+                            aria-label="Filter by booking status">
+
+                            <option value="ALL">
+                                All Bookings
+                            </option>
+
+                            <option value="CONFIRMED">
+                                Confirmed
+                            </option>
+
+                            <option value="PENDING">
+                                Pending
+                            </option>
+
+                            <option value="COMPLETED">
+                                Completed
+                            </option>
+
+                            <option value="CANCELLED">
+                                Cancelled
+                            </option>
+
+                        </select>
+
+
+                        <select id="bookingSort"
+                            aria-label="Sort bookings">
+
+                            <option value="newest">
+                                Newest First
+                            </option>
+
+                            <option value="oldest">
+                                Oldest First
+                            </option>
+
+                            <option value="amount-high">
+                                Highest Amount
+                            </option>
+
+                            <option value="amount-low">
+                                Lowest Amount
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+
+                <!-- BOOKING LIST -->
+                <div class="booking-list" id="customerBookingList">
+
+
+                    <!-- DEMO BOOKING CARD 1 -->
+                    <article class="customer-booking-card"
+                        data-status="CONFIRMED"
+                        data-booking-id="HS-2026-001"
+                        data-amount="6600">
+
+                        <div class="customer-booking-image">
+
+                            <img
+                                src="https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=700&q=85"
+                                alt="Luxury hotel room">
+
+                        </div>
+
+
+                        <div class="customer-booking-content">
+
+                            <div class="booking-card-top">
+
+                                <div>
+
+                                    <span class="booking-id">
+                                        BOOKING ID: HS-2026-001
+                                    </span>
+
+                                    <h3>Deluxe Comfort Room</h3>
+
+                                    <p>
+                                        <i class="fa-solid fa-hotel"></i>
+                                        HotelSphere Central
+                                    </p>
+
+                                </div>
+
+                                <span class="status-badge confirmed">
+                                    Confirmed
+                                </span>
+
+                            </div>
+
+
+                            <div class="booking-details-grid">
+
+                                <div>
+                                    <span>Check-in</span>
+                                    <strong>10 Nov 2026</strong>
+                                </div>
+
+                                <div>
+                                    <span>Check-out</span>
+                                    <strong>13 Nov 2026</strong>
+                                </div>
+
+                                <div>
+                                    <span>Guests</span>
+                                    <strong>2 Adults</strong>
+                                </div>
+
+                                <div>
+                                    <span>Duration</span>
+                                    <strong>3 Nights</strong>
+                                </div>
+
+                            </div>
+
+
+                            <div class="booking-card-bottom">
+
+                                <div>
+
+                                    <span>Total Amount</span>
+
+                                    <strong>₹6,600</strong>
+
+                                    <small class="payment-paid">
+                                        <i class="fa-solid fa-circle-check"></i>
+                                        Payment Paid
+                                    </small>
+
+                                </div>
+
+
+                                <div class="booking-card-actions">
+
+                                    <button type="button"
+                                        class="btn btn-outline view-booking"
+                                        data-booking-id="HS-2026-001">
+
+                                        <i class="fa-regular fa-eye"></i>
+                                        View Details
+
+                                    </button>
+
+                                    <button type="button"
+                                        class="btn btn-danger cancel-booking"
+                                        data-booking-id="HS-2026-001">
+
+                                        <i class="fa-solid fa-xmark"></i>
+                                        Cancel
+
+                                    </button>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- DEMO BOOKING CARD 2 -->
+                    <article class="customer-booking-card"
+                        data-status="COMPLETED"
+                        data-booking-id="HS-2026-002"
+                        data-amount="11000">
+
+                        <div class="customer-booking-image">
+
+                            <img
+                                src="https://images.unsplash.com/photo-1571896349842-33c89424de2d?auto=format&fit=crop&w=700&q=85"
+                                alt="Premium hotel resort">
+
+                        </div>
+
+
+                        <div class="customer-booking-content">
+
+                            <div class="booking-card-top">
+
+                                <div>
+
+                                    <span class="booking-id">
+                                        BOOKING ID: HS-2026-002
+                                    </span>
+
+                                    <h3>Premium Suite</h3>
+
+                                    <p>
+                                        <i class="fa-solid fa-hotel"></i>
+                                        HotelSphere Grand
+                                    </p>
+
+                                </div>
+
+                                <span class="status-badge completed">
+                                    Completed
+                                </span>
+
+                            </div>
+
+
+                            <div class="booking-details-grid">
+
+                                <div>
+                                    <span>Check-in</span>
+                                    <strong>15 Sep 2026</strong>
+                                </div>
+
+                                <div>
+                                    <span>Check-out</span>
+                                    <strong>17 Sep 2026</strong>
+                                </div>
+
+                                <div>
+                                    <span>Guests</span>
+                                    <strong>2 Adults</strong>
+                                </div>
+
+                                <div>
+                                    <span>Duration</span>
+                                    <strong>2 Nights</strong>
+                                </div>
+
+                            </div>
+
+
+                            <div class="booking-card-bottom">
+
+                                <div>
+
+                                    <span>Total Amount</span>
+
+                                    <strong>₹11,000</strong>
+
+                                    <small class="payment-paid">
+                                        <i class="fa-solid fa-circle-check"></i>
+                                        Payment Paid
+                                    </small>
+
+                                </div>
+
+
+                                <div class="booking-card-actions">
+
+                                    <button type="button"
+                                        class="btn btn-outline view-booking"
+                                        data-booking-id="HS-2026-002">
+
+                                        <i class="fa-regular fa-eye"></i>
+                                        View Details
+
+                                    </button>
+
+                                    <button type="button"
+                                        class="btn btn-outline download-invoice"
+                                        data-booking-id="HS-2026-002">
+
+                                        <i class="fa-solid fa-download"></i>
+                                        Invoice
+
+                                    </button>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- EMPTY STATE -->
+                    <div class="empty-state hidden" id="bookingEmptyState">
+
+                        <div class="empty-state-icon">
+                            <i class="fa-solid fa-calendar-xmark"></i>
+                        </div>
+
+                        <h3>No Bookings Found</h3>
+
+                        <p>
+                            No reservations match your search.
+                            Try changing your filters or explore hotels.
+                        </p>
+
+                        <a href="explore.html" class="btn btn-primary">
+                            Explore Hotels
+                        </a>
+
+                    </div>
+
+
+                </div>
+
+            </section>
+
+
+            <!-- BOOKING HELP -->
+            <section class="booking-help-section">
+
+                <div class="booking-help-icon">
+                    <i class="fa-solid fa-headset"></i>
+                </div>
+
+                <div>
+
+                    <h3>Need Help with Your Booking?</h3>
+
+                    <p>
+                        Have a question about your reservation?
+                        Our support team is here to help.
+                    </p>
+
+                </div>
+
+                <a href="mailto:support@hotelsphere.com"
+                    class="btn btn-outline">
+
+                    Contact Support
+
+                    <i class="fa-solid fa-arrow-right"></i>
+
+                </a>
+
+            </section>
+
+
+        </div>
+
+    </main>
+
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+
+        <div class="container">
+
+            <div class="footer-bottom">
+
+                <p>
+                    © <span id="currentYear"></span> HotelSphere.
+                    All rights reserved.
+                </p>
+
+                <p>
+                    Discover. Stay. Experience.
+                </p>
+
+            </div>
+
+        </div>
+
+    </footer>
+
+
+    <!-- SCRIPTS -->
+    <script src="js/config.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/site.js"></script>
+    <script src="js/my-bookings.js"></script>
+
+</body>
+</html>

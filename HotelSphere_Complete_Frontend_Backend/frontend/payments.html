@@ -1,0 +1,333 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Payments | HotelSphere</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <script defer src="js/config.js"></script>
+    <script defer src="js/api.js"></script>
+    <script defer src="js/app.js"></script>
+</head>
+
+<body>
+
+<div class="dashboard-layout">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+
+        <a class="brand-logo" href="index.html">
+            <span class="brand-icon">H</span>
+
+            <span class="brand-info">
+                HotelSphere
+                <small>MANAGEMENT SUITE</small>
+            </span>
+        </a>
+
+        <div class="sidebar-section">
+
+            <p class="sidebar-heading">MAIN MENU</p>
+
+            <nav class="sidebar-nav">
+
+                <a class="nav-link" href="index.html">
+                    <span class="nav-icon">▦</span>
+                    Overview
+                </a>
+
+                <a class="nav-link" href="rooms.html">
+                    <span class="nav-icon">▤</span>
+                    Rooms
+                </a>
+
+                <a class="nav-link" href="bookings.html">
+                    <span class="nav-icon">▣</span>
+                    Bookings
+                </a>
+
+                <a class="nav-link" href="customers.html">
+                    <span class="nav-icon">♙</span>
+                    Customers
+                </a>
+
+                <a class="nav-link active" href="payments.html">
+                    <span class="nav-icon">₹</span>
+                    Payments
+                </a>
+
+                <a class="nav-link" href="reports.html">
+                    <span class="nav-icon">▥</span>
+                    Reports
+                </a>
+
+            </nav>
+
+        </div>
+
+        <div class="sidebar-bottom">
+
+            <div class="sidebar-support">
+                <span>✦</span>
+
+                <div>
+                    <strong>HotelSphere</strong>
+                    <small>Premium Management</small>
+                </div>
+            </div>
+
+            <div class="admin-profile">
+                <div class="admin-avatar">A</div>
+
+                <div>
+                    <strong>Administrator</strong>
+                    <small>Hotel Manager</small>
+                </div>
+            </div>
+
+        </div>
+
+    </aside>
+
+
+    <!-- MAIN CONTENT -->
+    <main class="main-content">
+
+        <!-- TOPBAR -->
+        <header class="topbar">
+
+            <div class="page-heading">
+
+                <span>FINANCE & TRANSACTIONS</span>
+
+                <h1>Payment Management</h1>
+
+                <p>
+                    Record guest payments and manage hotel transaction records.
+                </p>
+
+            </div>
+
+            <div class="topbar-actions">
+
+                <div class="system-status">
+                    <span class="status-dot"></span>
+                    System Online
+                </div>
+
+                <div class="topbar-user">
+
+                    <div class="user-avatar">A</div>
+
+                    <div>
+                        <strong>Admin</strong>
+                        <small>Management</small>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <!-- HERO SECTION -->
+        <section class="hero-section">
+
+            <div class="hero-content">
+
+                <span class="hero-label">HOTELSPHERE FINANCE</span>
+
+                <h2>Smart payments.<br>Simplified operations.</h2>
+
+                <p>
+                    Keep track of reservations, payment methods
+                    and transaction records from one place.
+                </p>
+
+                <a href="#recordPayment" class="button">
+                    + Record New Payment
+                </a>
+
+            </div>
+
+            <div class="hero-image">
+
+                <div class="image-caption">
+                    <strong>Secure transactions.</strong>
+                    <span>Transparent financial management.</span>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- RECORD PAYMENT -->
+        <section class="panel" id="recordPayment">
+
+            <div class="table-header">
+
+                <div>
+                    <span class="section-eyebrow">NEW TRANSACTION</span>
+
+                    <h2>Record Payment</h2>
+
+                    <p>
+                        Enter the booking and payment details.
+                    </p>
+                </div>
+
+                <span class="badge">Payment Entry</span>
+
+            </div>
+
+
+            <form id="paymentForm" class="form one">
+
+                <label>
+                    <span>Select Booking</span>
+
+                    <select id="paymentBooking" required>
+                        <option value="">Select booking</option>
+                    </select>
+                </label>
+
+
+                <label>
+                    <span>Payment Amount (₹)</span>
+
+                    <input
+                        type="number"
+                        id="paymentAmount"
+                        placeholder="Enter amount"
+                        min="1"
+                        step="0.01"
+                        required
+                    >
+                </label>
+
+
+                <label>
+                    <span>Payment Method</span>
+
+                    <select id="paymentMethod" required>
+
+                        <option value="UPI">UPI</option>
+
+                        <option value="CASH">Cash</option>
+
+                        <option value="CARD">Credit / Debit Card</option>
+
+                        <option value="BANK_TRANSFER">Bank Transfer</option>
+
+                    </select>
+                </label>
+
+
+                <label>
+                    <span>Transaction Reference</span>
+
+                    <input
+                        type="text"
+                        id="paymentReference"
+                        placeholder="Enter transaction reference (optional)"
+                    >
+                </label>
+
+
+                <div class="form-action">
+
+                    <button type="submit" class="button">
+                        Record Payment →
+                    </button>
+
+                    <p id="paymentMessage" role="status"></p>
+
+                </div>
+
+            </form>
+
+        </section>
+
+
+        <!-- PAYMENT HISTORY -->
+        <section class="panel">
+
+            <div class="table-header">
+
+                <div>
+                    <span class="section-eyebrow">FINANCIAL RECORDS</span>
+
+                    <h2>Payment History</h2>
+
+                    <p>
+                        Review recorded hotel transactions.
+                    </p>
+                </div>
+
+                <span class="badge">Transaction Records</span>
+
+            </div>
+
+
+            <div class="tablewrap">
+
+                <table>
+
+                    <thead>
+                        <tr>
+                            <th>Payment ID</th>
+                            <th>Booking</th>
+                            <th>Amount</th>
+                            <th>Payment Method</th>
+                            <th>Status</th>
+                            <th>Payment Date</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="paymentsTable">
+
+                        <tr>
+                            <td colspan="6">
+                                Loading payment records...
+                            </td>
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+
+        <!-- FOOTER -->
+        <footer class="dashboard-footer">
+
+            <span>© 2026 HotelSphere Management Suite</span>
+
+            <span>Designed for smarter hotel operations.</span>
+
+        </footer>
+
+    </main>
+
+</div>
+
+
+<!-- TOAST -->
+<div id="toast" role="status" aria-live="polite"></div>
+
+</body>
+</html>

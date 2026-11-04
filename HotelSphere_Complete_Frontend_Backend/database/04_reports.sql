@@ -1,0 +1,3 @@
+CREATE OR REPLACE VIEW hs_v_daily_revenue AS SELECT TRUNC(paid_at) revenue_date,SUM(amount) revenue,COUNT(*) payment_count FROM hs_payments WHERE payment_status='SUCCESS' GROUP BY TRUNC(paid_at);
+CREATE OR REPLACE VIEW hs_v_room_occupancy AS SELECT r.room_id,r.room_number,rt.type_name,br.branch_name,r.status FROM hs_rooms r JOIN hs_room_types rt ON rt.room_type_id=r.room_type_id JOIN hs_branches br ON br.branch_id=r.branch_id;
+CREATE OR REPLACE VIEW hs_v_monthly_booking_stats AS SELECT TO_CHAR(created_at,'YYYY-MM') booking_month,COUNT(*) total_bookings,SUM(CASE WHEN booking_status='CANCELLED' THEN 1 ELSE 0 END) cancelled_bookings,SUM(total_amount) booking_value FROM hs_bookings GROUP BY TO_CHAR(created_at,'YYYY-MM');

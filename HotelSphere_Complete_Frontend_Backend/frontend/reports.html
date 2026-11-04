@@ -1,0 +1,409 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Reports & Analytics | HotelSphere</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <script defer src="js/config.js"></script>
+    <script defer src="js/api.js"></script>
+    <script defer src="js/app.js"></script>
+</head>
+
+<body>
+
+<div class="dashboard-layout">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+
+        <a class="brand-logo" href="index.html">
+            <span class="brand-icon">H</span>
+
+            <span class="brand-info">
+                HotelSphere
+                <small>MANAGEMENT SUITE</small>
+            </span>
+        </a>
+
+        <div class="sidebar-section">
+
+            <p class="sidebar-heading">MAIN MENU</p>
+
+            <nav class="sidebar-nav">
+
+                <a class="nav-link" href="index.html">
+                    <span class="nav-icon">▦</span>
+                    Overview
+                </a>
+
+                <a class="nav-link" href="rooms.html">
+                    <span class="nav-icon">▤</span>
+                    Rooms
+                </a>
+
+                <a class="nav-link" href="bookings.html">
+                    <span class="nav-icon">▣</span>
+                    Bookings
+                </a>
+
+                <a class="nav-link" href="customers.html">
+                    <span class="nav-icon">♙</span>
+                    Customers
+                </a>
+
+                <a class="nav-link" href="payments.html">
+                    <span class="nav-icon">₹</span>
+                    Payments
+                </a>
+
+                <a class="nav-link active" href="reports.html">
+                    <span class="nav-icon">▥</span>
+                    Reports
+                </a>
+
+            </nav>
+
+        </div>
+
+        <div class="sidebar-bottom">
+
+            <div class="sidebar-support">
+                <span>✦</span>
+
+                <div>
+                    <strong>HotelSphere</strong>
+                    <small>Premium Management</small>
+                </div>
+            </div>
+
+            <div class="admin-profile">
+
+                <div class="admin-avatar">A</div>
+
+                <div>
+                    <strong>Administrator</strong>
+                    <small>Hotel Manager</small>
+                </div>
+
+            </div>
+
+        </div>
+
+    </aside>
+
+
+    <!-- MAIN CONTENT -->
+    <main class="main-content">
+
+        <!-- TOPBAR -->
+        <header class="topbar">
+
+            <div class="page-heading">
+
+                <span>BUSINESS INTELLIGENCE</span>
+
+                <h1>Reports & Analytics</h1>
+
+                <p>
+                    Monitor hotel performance and explore business insights.
+                </p>
+
+            </div>
+
+            <div class="topbar-actions">
+
+                <div class="system-status">
+                    <span class="status-dot"></span>
+                    System Online
+                </div>
+
+                <div class="topbar-user">
+
+                    <div class="user-avatar">A</div>
+
+                    <div>
+                        <strong>Admin</strong>
+                        <small>Management</small>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <!-- HERO SECTION -->
+        <section class="hero-section">
+
+            <div class="hero-content">
+
+                <span class="hero-label">HOTEL PERFORMANCE</span>
+
+                <h2>Insights that drive<br>better decisions.</h2>
+
+                <p>
+                    Understand occupancy, bookings and collected revenue
+                    with centralized hotel reporting.
+                </p>
+
+                <a href="#reportStatistics" class="button">
+                    Explore Reports →
+                </a>
+
+            </div>
+
+            <div class="hero-image">
+
+                <div class="image-caption">
+                    <strong>Smarter hotel analytics.</strong>
+                    <span>Performance at a glance.</span>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- STATISTICS -->
+        <section class="panel" id="reportStatistics">
+
+            <div class="table-header">
+
+                <div>
+                    <span class="section-eyebrow">HOTEL OVERVIEW</span>
+
+                    <h2>Performance Statistics</h2>
+
+                    <p>
+                        Key indicators from your hotel management database.
+                    </p>
+                </div>
+
+                <span class="badge">Live Data</span>
+
+            </div>
+
+
+            <div class="stats-grid">
+
+                <article class="stat-card">
+
+                    <div class="stat-icon">▤</div>
+
+                    <small>Total Rooms</small>
+
+                    <strong id="reportRooms">—</strong>
+
+                    <span>Registered hotel rooms</span>
+
+                </article>
+
+
+                <article class="stat-card">
+
+                    <div class="stat-icon">⌂</div>
+
+                    <small>Occupied Rooms</small>
+
+                    <strong id="reportOccupied">—</strong>
+
+                    <span>Currently occupied rooms</span>
+
+                </article>
+
+
+                <article class="stat-card">
+
+                    <div class="stat-icon">▣</div>
+
+                    <small>Confirmed Bookings</small>
+
+                    <strong id="reportBookings">—</strong>
+
+                    <span>Confirmed reservations</span>
+
+                </article>
+
+
+                <article class="stat-card">
+
+                    <div class="stat-icon">₹</div>
+
+                    <small>Collected Revenue</small>
+
+                    <strong id="reportRevenue">—</strong>
+
+                    <span>Recorded revenue</span>
+
+                </article>
+
+            </div>
+
+        </section>
+
+
+        <!-- SQL REPORT CATALOGUE -->
+        <section class="panel">
+
+            <div class="table-header">
+
+                <div>
+                    <span class="section-eyebrow">DATABASE INTELLIGENCE</span>
+
+                    <h2>SQL Report Catalogue</h2>
+
+                    <p>
+                        Oracle SQL queries for accessing hotel business reports.
+                    </p>
+                </div>
+
+                <span class="badge">Oracle Database</span>
+
+            </div>
+
+
+            <div class="report-list">
+
+                <!-- REPORT 1 -->
+                <article class="report-item">
+
+                    <div class="report-item-heading">
+                        <span class="report-number">01</span>
+
+                        <div>
+                            <h3>Room Occupancy Report</h3>
+
+                            <p>
+                                View room availability and occupancy information.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="report-code">
+                        <code>SELECT * FROM hs_v_room_occupancy;</code>
+                    </div>
+
+                </article>
+
+
+                <!-- REPORT 2 -->
+                <article class="report-item">
+
+                    <div class="report-item-heading">
+                        <span class="report-number">02</span>
+
+                        <div>
+                            <h3>Daily Revenue Report</h3>
+
+                            <p>
+                                Review revenue generated on a daily basis.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="report-code">
+                        <code>SELECT * FROM hs_v_daily_revenue ORDER BY revenue_date DESC;</code>
+                    </div>
+
+                </article>
+
+
+                <!-- REPORT 3 -->
+                <article class="report-item">
+
+                    <div class="report-item-heading">
+                        <span class="report-number">03</span>
+
+                        <div>
+                            <h3>Monthly Booking Statistics</h3>
+
+                            <p>
+                                Analyze booking activity across different months.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="report-code">
+                        <code>SELECT * FROM hs_v_monthly_booking_stats;</code>
+                    </div>
+
+                </article>
+
+
+                <!-- REPORT 4 -->
+                <article class="report-item">
+
+                    <div class="report-item-heading">
+                        <span class="report-number">04</span>
+
+                        <div>
+                            <h3>Outstanding Payment Report</h3>
+
+                            <p>
+                                Identify bookings with pending payment balances.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="report-code">
+                        <code>SELECT * FROM hs_v_payment_summary WHERE due_amount &gt; 0;</code>
+                    </div>
+
+                </article>
+
+
+                <!-- REPORT 5 -->
+                <article class="report-item">
+
+                    <div class="report-item-heading">
+                        <span class="report-number">05</span>
+
+                        <div>
+                            <h3>Audit Log Report</h3>
+
+                            <p>
+                                Review recorded database activities and audit events.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="report-code">
+                        <code>SELECT * FROM hs_audit_log ORDER BY action_at DESC;</code>
+                    </div>
+
+                </article>
+
+            </div>
+
+        </section>
+
+
+        <!-- FOOTER -->
+        <footer class="dashboard-footer">
+
+            <span>© 2026 HotelSphere Management Suite</span>
+
+            <span>Designed for smarter hotel operations.</span>
+
+        </footer>
+
+    </main>
+
+</div>
+
+
+<!-- TOAST -->
+<div id="toast" role="status" aria-live="polite"></div>
+
+</body>
+</html>

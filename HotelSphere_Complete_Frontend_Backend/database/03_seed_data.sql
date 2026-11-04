@@ -1,0 +1,14 @@
+INSERT INTO hs_branches(branch_name,city,address,phone) VALUES('HotelSphere Central','Mohali','Mohali, Punjab','0172-4000000');
+INSERT INTO hs_room_types(type_name,description,base_rate,capacity) VALUES('Standard','Comfortable standard room',2200,2);
+INSERT INTO hs_room_types(type_name,description,base_rate,capacity) VALUES('Deluxe','Premium room',3500,3);
+INSERT INTO hs_room_types(type_name,description,base_rate,capacity) VALUES('Suite','Suite with living area',6200,4);
+INSERT INTO hs_rooms(branch_id,room_type_id,room_number,floor_no) VALUES(1,1,'101',1);
+INSERT INTO hs_rooms(branch_id,room_type_id,room_number,floor_no) VALUES(1,1,'102',1);
+INSERT INTO hs_rooms(branch_id,room_type_id,room_number,floor_no) VALUES(1,2,'201',2);
+INSERT INTO hs_rooms(branch_id,room_type_id,room_number,floor_no) VALUES(1,2,'202',2);
+INSERT INTO hs_rooms(branch_id,room_type_id,room_number,floor_no) VALUES(1,3,'301',3);
+INSERT INTO hs_customers(full_name,email,phone,address,loyalty_tier,loyalty_points) VALUES('Aarav Sharma','aarav@example.com','9876500001','Mohali','GOLD',420);
+INSERT INTO hs_customers(full_name,email,phone,address) VALUES('Meera Kapoor','meera@example.com','9876500002','Chandigarh');
+INSERT INTO hs_customers(full_name,email,phone,address) VALUES('Kabir Singh','kabir@example.com','9876500003','Panchkula');
+INSERT INTO hs_employees(branch_id,full_name,job_role,email) VALUES(1,'Riya Verma','RECEPTIONIST','riya@hotelsphere.demo');
+COMMIT;

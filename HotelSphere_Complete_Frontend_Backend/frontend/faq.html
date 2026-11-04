@@ -1,0 +1,1339 @@
+
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description"
+        content="Find answers to common HotelSphere questions about bookings, payments, cancellations and hotel stays.">
+
+    <title>FAQs | HotelSphere</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@500;600;700&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <script>
+        (function () {
+            const theme = localStorage.getItem("hotelsphere-theme");
+
+            if (theme === "dark" || theme === "light") {
+                document.documentElement.setAttribute("data-theme", theme);
+            }
+        })();
+    </script>
+</head>
+
+<body class="faq-page">
+
+    <!-- HEADER -->
+    <header class="site-header">
+
+        <nav class="navbar container">
+
+            <a href="index.html" class="brand-logo">
+
+                <span class="brand-icon">
+                    <i class="fa-solid fa-hotel"></i>
+                </span>
+
+                <span class="brand-text">
+                    <strong>HotelSphere</strong>
+                    <small>STAY BEYOND EXPECTATIONS</small>
+                </span>
+
+            </a>
+
+
+            <div class="nav-links">
+
+                <a href="index.html">Home</a>
+                <a href="explore.html">Explore Hotels</a>
+                <a href="my-bookings.html">My Bookings</a>
+                <a href="about.html">About Us</a>
+                <a href="contact.html">Contact</a>
+
+            </div>
+
+
+            <div class="nav-actions">
+
+                <button class="theme-toggle"
+                    id="themeToggle"
+                    type="button"
+                    aria-label="Switch theme">
+
+                    <i class="fa-solid fa-moon"></i>
+
+                </button>
+
+                <a href="login.html" class="btn btn-outline">
+                    Sign In
+                </a>
+
+                <a href="explore.html" class="btn btn-primary">
+                    Book a Stay
+                </a>
+
+            </div>
+
+        </nav>
+
+    </header>
+
+
+    <!-- MAIN -->
+    <main>
+
+
+        <!-- HERO -->
+        <section class="faq-hero">
+
+            <div class="container">
+
+                <div class="faq-hero-content">
+
+                    <span class="section-eyebrow">
+                        HELP CENTER
+                    </span>
+
+                    <h1>
+                        Frequently Asked
+                        <span>Questions.</span>
+                    </h1>
+
+                    <p>
+                        Find quick answers to common questions
+                        about HotelSphere, reservations,
+                        payments and your hotel experience.
+                    </p>
+
+
+                    <div class="faq-search-box">
+
+                        <i class="fa-solid fa-magnifying-glass"></i>
+
+                        <input
+                            type="search"
+                            id="faqSearch"
+                            placeholder="Search your question..."
+                            aria-label="Search frequently asked questions">
+
+                        <button type="button"
+                            id="clearFaqSearch"
+                            aria-label="Clear search">
+
+                            <i class="fa-solid fa-xmark"></i>
+
+                        </button>
+
+                    </div>
+
+
+                    <div class="faq-hero-meta">
+
+                        <span>
+                            <i class="fa-regular fa-calendar"></i>
+                            <span id="currentDate">Loading date...</span>
+                        </span>
+
+                        <span>
+                            <i class="fa-regular fa-clock"></i>
+                            <strong id="currentTime">--:--:--</strong>
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- FAQ CATEGORIES -->
+        <section class="faq-category-section">
+
+            <div class="container">
+
+                <div class="section-heading">
+
+                    <span class="section-eyebrow">
+                        BROWSE BY CATEGORY
+                    </span>
+
+                    <h2>What Do You Need Help With?</h2>
+
+                    <p>
+                        Select a category to find
+                        relevant answers quickly.
+                    </p>
+
+                </div>
+
+
+                <div class="faq-category-grid">
+
+
+                    <button type="button"
+                        class="faq-category-card active"
+                        data-category="all">
+
+                        <span>
+                            <i class="fa-solid fa-layer-group"></i>
+                        </span>
+
+                        <strong>All Questions</strong>
+
+                    </button>
+
+
+                    <button type="button"
+                        class="faq-category-card"
+                        data-category="booking">
+
+                        <span>
+                            <i class="fa-solid fa-calendar-check"></i>
+                        </span>
+
+                        <strong>Reservations</strong>
+
+                    </button>
+
+
+                    <button type="button"
+                        class="faq-category-card"
+                        data-category="payment">
+
+                        <span>
+                            <i class="fa-solid fa-credit-card"></i>
+                        </span>
+
+                        <strong>Payments</strong>
+
+                    </button>
+
+
+                    <button type="button"
+                        class="faq-category-card"
+                        data-category="cancellation">
+
+                        <span>
+                            <i class="fa-solid fa-calendar-xmark"></i>
+                        </span>
+
+                        <strong>Cancellation</strong>
+
+                    </button>
+
+
+                    <button type="button"
+                        class="faq-category-card"
+                        data-category="stay">
+
+                        <span>
+                            <i class="fa-solid fa-bed"></i>
+                        </span>
+
+                        <strong>Hotel Stay</strong>
+
+                    </button>
+
+
+                    <button type="button"
+                        class="faq-category-card"
+                        data-category="account">
+
+                        <span>
+                            <i class="fa-solid fa-user"></i>
+                        </span>
+
+                        <strong>My Account</strong>
+
+                    </button>
+
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- QUESTIONS -->
+        <section class="faq-questions-section">
+
+            <div class="container">
+
+                <div class="faq-content-layout">
+
+
+                    <!-- LEFT SIDE -->
+                    <div class="faq-list-column">
+
+                        <div class="faq-list-heading">
+
+                            <div>
+
+                                <span class="section-eyebrow">
+                                    HELP & SUPPORT
+                                </span>
+
+                                <h2>Common Questions</h2>
+
+                            </div>
+
+                            <span class="faq-result-count"
+                                id="faqResultCount">
+
+                                24 Questions
+
+                            </span>
+
+                        </div>
+
+
+                        <!-- BOOKING -->
+                        <div class="faq-group"
+                            data-group="booking">
+
+                            <div class="faq-group-heading">
+
+                                <span>
+                                    <i class="fa-solid fa-calendar-check"></i>
+                                </span>
+
+                                <h3>Reservations & Booking</h3>
+
+                            </div>
+
+
+                            <div class="faq-accordion">
+
+
+                                <article class="faq-item"
+                                    data-category="booking">
+
+                                    <button type="button"
+                                        class="faq-question"
+                                        aria-expanded="false">
+
+                                        <span>
+                                            How can I book a room
+                                            on HotelSphere?
+                                        </span>
+
+                                        <i class="fa-solid fa-plus"></i>
+
+                                    </button>
+
+                                    <div class="faq-answer" hidden>
+
+                                        <p>
+                                            Visit the Explore Hotels
+                                            page, select your preferred
+                                            room, choose check-in and
+                                            check-out dates, enter guest
+                                            information and follow the
+                                            checkout process.
+                                        </p>
+
+                                    </div>
+
+                                </article>
+
+
+                                <article class="faq-item"
+                                    data-category="booking">
+
+                                    <button type="button"
+                                        class="faq-question"
+                                        aria-expanded="false">
+
+                                        <span>
+                                            How do I know whether
+                                            my booking is confirmed?
+                                        </span>
+
+                                        <i class="fa-solid fa-plus"></i>
+
+                                    </button>
+
+                                    <div class="faq-answer" hidden>
+
+                                        <p>
+                                            Check your My Bookings
+                                            section for the latest
+                                            reservation status. A
+                                            booking is confirmed only
+                                            after successful processing
+                                            by the booking system.
+                                        </p>
+
+                                    </div>
+
+                                </article>
+
+
+                                <article class="faq-item"
+                                    data-category="booking">
+
+                                    <button type="button"
+                                        class="faq-question"
+                                        aria-expanded="false">
+
+                                        <span>
+                                            Can I modify my reservation
+                                            after booking?
+                                        </span>
+
+                                        <i class="fa-solid fa-plus"></i>
+
+                                    </button>
+
+                                    <div class="faq-answer" hidden>
+
+                                        <p>
+                                            Modification availability
+                                            depends on the booking
+                                            status and hotel policy.
+                                            Contact support with your
+                                            booking reference for
+                                            assistance.
+                                        </p>
+
+                                    </div>
+
+                                </article>
+
+
+                                <article class="faq-item"
+                                    data-category="booking">
+
+                                    <button type="button"
+                                        class="faq-question"
+                                        aria-expanded="false">
+
+                                        <span>
+                                            Where can I find my
+                                            booking reference?
+                                        </span>
+
+                                        <i class="fa-solid fa-plus"></i>
+
+                                    </button>
+
+                                    <div class="faq-answer" hidden>
+
+                                        <p>
+                                            Your booking reference
+                                            should be available on
+                                            the confirmation page
+                                            and inside My Bookings
+                                            after the reservation
+                                            is successfully created.
+                                        </p>
+
+                                    </div>
+
+                                </article>
+
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- PAYMENT -->
+                        <div class="faq-group"
+                            data-group="payment">
+
+                            <div class="faq-group-heading">
+
+                                <span>
+                                    <i class="fa-solid fa-credit-card"></i>
+                                </span>
+
+                                <h3>Payments & Billing</h3>
+
+                            </div>
+
+
+                            <div class="faq-accordion">
+
+
+                                <article class="faq-item"
+                                    data-category="payment">
+
+                                    <button type="button"
+                                        class="faq-question"
+                                        aria-expanded="false">
+
+                                        <span>
+                                            Which payment methods
+                                            are available?
+                                        </span>
+
+                                        <i class="fa-solid fa-plus"></i>
+
+                                    </button>
+
+                                    <div class="faq-answer" hidden>
+
+                                        <p>
+                                            HotelSphere is designed
+                                            to support online payment,
+                                            UPI and pay-at-hotel
+                                            options where enabled.
+                                            Actual availability
+                                            depends on the configured
+                                            payment system.
+                                        </p>
+
+                                    </div>
+
+                                </article>
+
+
+                                <article class="faq-item"
+                                    data-category="payment">
+
+                                    <button type="button"
+                                        class="faq-question"
+                                        aria-expanded="false">
+
+                                        <span>
+                                            How can I get my invoice?
+                                        </span>
+
+                                        <i class="fa-solid fa-plus"></i>
+
+                                    </button>
+
+                                    <div class="faq-answer" hidden>
+
+                                        <p>
+                                            Once invoice generation
+                                            is enabled, you can
+                                            access the invoice from
+                                            the booking confirmation
+                                            page or My Bookings
+                                            section.
+                                        </p>
+
+                                    </div>
+
+                                </article>
+
+
+                                <article class="faq-item"
+                                    data-category="payment">
+
+                                    <button type="button"
+                                        class="faq-question"
+                                        aria-expanded="false">
+
+                                        <span>
+                                            What should I do if
+                                            payment fails?
+                                        </span>
+
+                                        <i class="fa-solid fa-plus"></i>
+
+                                    </button>
+
+                                    <div class="faq-answer" hidden>
+
+                                        <p>
+                                            Check your payment
+                                            provider's transaction
+                                            status before retrying.
+                                            If the amount was
+                                            deducted but the booking
+                                            is not confirmed, contact
+                                            support with your
+                                            transaction reference.
+                                        </p>
+
+                                    </div>
+
+                                </article>
+
+
+                                <article class="faq-item"
+                                    data-category="payment">
+
+                                    <button type="button"
+                                        class="faq-question"
+                                        aria-expanded="false">
+
+                                        <span>
+                                            Are taxes included
+                                            in the displayed price?
+                                        </span>
+
+                                        <i class="fa-solid fa-plus"></i>
+
+                                    </button>
+
+                                    <div class="faq-answer" hidden>
+
+                                        <p>
+                                            The checkout summary
+                                            should show applicable
+                                            taxes and charges
+                                            separately before
+                                            confirmation. Always
+                                            review the final amount
+                                            before completing
+                                            payment.
+                                        </p>
+
+                                    </div>
+
+                                </article>
+
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- CANCELLATION -->
+                        <div class="faq-group"
+                            data-group="cancellation">
+
+                            <div class="faq-group-heading">
+
+                                <span>
+                                    <i class="fa-solid fa-calendar-xmark"></i>
+                                </span>
+
+                                <h3>Cancellations & Refunds</h3>
+
+                            </div>
+
+
+                            <div class="faq-accordion">
+
+
+                                <article class="faq-item"
+                                    data-category="cancellation">
+
+                                    <button type="button"
+                                        class="faq-question"
+                                        aria-expanded="false">
+
+                                        <span>
+                                            How can I cancel
+                                            my reservation?
+                                        </span>
+
+                                        <i class="fa-solid fa-plus"></i>
+
+                                    </button>
+
+                                    <div class="faq-answer" hidden>
+
+                                        <p>
+                                            Open My Bookings,
+                                            select the relevant
+                                            reservation and use
+                                            the cancellation option
+                                            if available. Cancellation
+                                            must follow the applicable
+                                            hotel policy.
+                                        </p>
+
+                                    </div>
+
+                                </article>
+
+
+                                <article class="faq-item"
+                                    data-category="cancellation">
+
+                                    <button type="button"
+                                        class="faq-question"
+                                        aria-expanded="false">
+
+                                        <span>
+                                            Will I receive a refund
+                                            after cancellation?
+                                        </span>
+
+                                        <i class="fa-solid fa-plus"></i>
+
+                                    </button>
+
+                                    <div class="faq-answer" hidden>
+
+                                        <p>
+                                            Refund eligibility
+                                            depends on the selected
+                                            cancellation policy,
+                                            payment status and
+                                            applicable charges.
+                                            Contact support for
+                                            your specific reservation.
+                                        </p>
+
+                                    </div>
+
+                                </article>
+
+
+                                <article class="faq-item"
+                                    data-category="cancellation">
+
+                                    <button type="button"
+                                        class="faq-question"
+                                        aria-expanded="false">
+
+                                        <span>
+                                            How long does a refund
+                                            take?
+                                        </span>
+
+                                        <i class="fa-solid fa-plus"></i>
+
+                                    </button>
+
+                                    <div class="faq-answer" hidden>
+
+                                        <p>
+                                            Refund processing time
+                                            depends on the payment
+                                            provider and banking
+                                            channel. The actual
+                                            timeline should be
+                                            communicated after
+                                            refund approval.
+                                        </p>
+
+                                    </div>
+
+                                </article>
+
+
+                                <article class="faq-item"
+                                    data-category="cancellation">
+
+                                    <button type="button"
+                                        class="faq-question"
+                                        aria-expanded="false">
+
+                                        <span>
+                                            Can I cancel a booking
+                                            on the check-in date?
+                                        </span>
+
+                                        <i class="fa-solid fa-plus"></i>
+
+                                    </button>
+
+                                    <div class="faq-answer" hidden>
+
+                                        <p>
+                                            Same-day cancellation
+                                            depends on the room's
+                                            policy. Some reservations
+                                            may have restrictions
+                                            or cancellation charges.
+                                            Check your booking
+                                            conditions first.
+                                        </p>
+
+                                    </div>
+
+                                </article>
+
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- STAY -->
+                        <div class="faq-group"
+                            data-group="stay">
+
+                            <div class="faq-group-heading">
+
+                                <span>
+                                    <i class="fa-solid fa-bed"></i>
+                                </span>
+
+                                <h3>Hotel Stay & Facilities</h3>
+
+                            </div>
+
+
+                            <div class="faq-accordion">
+
+
+                                <article class="faq-item"
+                                    data-category="stay">
+
+                                    <button type="button"
+                                        class="faq-question"
+                                        aria-expanded="false">
+
+                                        <span>
+                                            What are the standard
+                                            check-in and check-out times?
+                                        </span>
+
+                                        <i class="fa-solid fa-plus"></i>
+
+                                    </button>
+
+                                    <div class="faq-answer" hidden>
+
+                                        <p>
+                                            The sample HotelSphere
+                                            policy uses 12:00 PM
+                                            for check-in and
+                                            11:00 AM for check-out.
+                                            Actual times must be
+                                            confirmed with the
+                                            selected hotel.
+                                        </p>
+
+                                    </div>
+
+                                </article>
+
+
+                                <article class="faq-item"
+                                    data-category="stay">
+
+                                    <button type="button"
+                                        class="faq-question"
+                                        aria-expanded="false">
+
+                                        <span>
+                                            What documents are
+                                            required at check-in?
+                                        </span>
+
+                                        <i class="fa-solid fa-plus"></i>
+
+                                    </button>
+
+                                    <div class="faq-answer" hidden>
+
+                                        <p>
+                                            Guests should carry
+                                            valid identification
+                                            documents accepted
+                                            by the hotel. Requirements
+                                            may vary by property
+                                            and applicable rules.
+                                        </p>
+
+                                    </div>
+
+                                </article>
+
+
+                                <article class="faq-item"
+                                    data-category="stay">
+
+                                    <button type="button"
+                                        class="faq-question"
+                                        aria-expanded="false">
+
+                                        <span>
+                                            Can I request early
+                                            check-in or late check-out?
+                                        </span>
+
+                                        <i class="fa-solid fa-plus"></i>
+
+                                    </button>
+
+                                    <div class="faq-answer" hidden>
+
+                                        <p>
+                                            Early check-in and
+                                            late check-out depend
+                                            on room availability
+                                            and hotel policy.
+                                            Contact the hotel
+                                            in advance.
+                                        </p>
+
+                                    </div>
+
+                                </article>
+
+
+                                <article class="faq-item"
+                                    data-category="stay">
+
+                                    <button type="button"
+                                        class="faq-question"
+                                        aria-expanded="false">
+
+                                        <span>
+                                            Can I add special
+                                            requests to my booking?
+                                        </span>
+
+                                        <i class="fa-solid fa-plus"></i>
+
+                                    </button>
+
+                                    <div class="faq-answer" hidden>
+
+                                        <p>
+                                            Yes. You can enter
+                                            special requests
+                                            during checkout.
+                                            Requests are subject
+                                            to hotel availability
+                                            and confirmation.
+                                        </p>
+
+                                    </div>
+
+                                </article>
+
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- ACCOUNT -->
+                        <div class="faq-group"
+                            data-group="account">
+
+                            <div class="faq-group-heading">
+
+                                <span>
+                                    <i class="fa-solid fa-user"></i>
+                                </span>
+
+                                <h3>Account & Security</h3>
+
+                            </div>
+
+
+                            <div class="faq-accordion">
+
+
+                                <article class="faq-item"
+                                    data-category="account">
+
+                                    <button type="button"
+                                        class="faq-question"
+                                        aria-expanded="false">
+
+                                        <span>
+                                            Do I need an account
+                                            to book a room?
+                                        </span>
+
+                                        <i class="fa-solid fa-plus"></i>
+
+                                    </button>
+
+                                    <div class="faq-answer" hidden>
+
+                                        <p>
+                                            Account requirements
+                                            depend on the booking
+                                            flow configured by
+                                            HotelSphere. Creating
+                                            an account can help
+                                            manage reservations
+                                            in one place.
+                                        </p>
+
+                                    </div>
+
+                                </article>
+
+
+                                <article class="faq-item"
+                                    data-category="account">
+
+                                    <button type="button"
+                                        class="faq-question"
+                                        aria-expanded="false">
+
+                                        <span>
+                                            I forgot my password.
+                                            What should I do?
+                                        </span>
+
+                                        <i class="fa-solid fa-plus"></i>
+
+                                    </button>
+
+                                    <div class="faq-answer" hidden>
+
+                                        <p>
+                                            Visit the Forgot
+                                            Password page and
+                                            follow the password
+                                            recovery instructions.
+                                            Use only the official
+                                            HotelSphere website.
+                                        </p>
+
+                                    </div>
+
+                                </article>
+
+
+                                <article class="faq-item"
+                                    data-category="account">
+
+                                    <button type="button"
+                                        class="faq-question"
+                                        aria-expanded="false">
+
+                                        <span>
+                                            How is my personal
+                                            information protected?
+                                        </span>
+
+                                        <i class="fa-solid fa-plus"></i>
+
+                                    </button>
+
+                                    <div class="faq-answer" hidden>
+
+                                        <p>
+                                            HotelSphere is designed
+                                            to handle customer
+                                            information responsibly.
+                                            Review the Privacy Policy
+                                            for information about
+                                            data collection and use.
+                                        </p>
+
+                                    </div>
+
+                                </article>
+
+
+                                <article class="faq-item"
+                                    data-category="account">
+
+                                    <button type="button"
+                                        class="faq-question"
+                                        aria-expanded="false">
+
+                                        <span>
+                                            How can I contact
+                                            customer support?
+                                        </span>
+
+                                        <i class="fa-solid fa-plus"></i>
+
+                                    </button>
+
+                                    <div class="faq-answer" hidden>
+
+                                        <p>
+                                            Visit the Contact Us
+                                            page or email
+                                            support@hotelsphere.com
+                                            with your enquiry.
+                                        </p>
+
+                                    </div>
+
+                                </article>
+
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- EMPTY STATE -->
+                        <div class="faq-empty-state"
+                            id="faqEmptyState"
+                            hidden>
+
+                            <i class="fa-solid fa-magnifying-glass"></i>
+
+                            <h3>No Questions Found</h3>
+
+                            <p>
+                                Try another search term or
+                                choose a different category.
+                            </p>
+
+                            <button type="button"
+                                class="btn btn-outline"
+                                id="resetFaqSearch">
+
+                                Reset Search
+
+                            </button>
+
+                        </div>
+
+
+                    </div>
+
+
+                    <!-- RIGHT SIDEBAR -->
+                    <aside class="faq-sidebar">
+
+
+                        <div class="faq-help-card">
+
+                            <div class="faq-help-icon">
+                                <i class="fa-solid fa-headset"></i>
+                            </div>
+
+                            <h3>Still Need Help?</h3>
+
+                            <p>
+                                Can't find the answer you're
+                                looking for? Send us your
+                                question directly.
+                            </p>
+
+                            <a href="contact.html"
+                                class="btn btn-primary">
+
+                                Contact Support
+                                <i class="fa-solid fa-arrow-right"></i>
+
+                            </a>
+
+                        </div>
+
+
+                        <div class="faq-sidebar-card">
+
+                            <h3>Quick Links</h3>
+
+                            <a href="my-bookings.html">
+
+                                <i class="fa-solid fa-calendar-check"></i>
+
+                                <span>My Bookings</span>
+
+                                <i class="fa-solid fa-arrow-right"></i>
+
+                            </a>
+
+
+                            <a href="forgot-password.html">
+
+                                <i class="fa-solid fa-key"></i>
+
+                                <span>Reset Password</span>
+
+                                <i class="fa-solid fa-arrow-right"></i>
+
+                            </a>
+
+
+                            <a href="terms.html">
+
+                                <i class="fa-solid fa-file-contract"></i>
+
+                                <span>Terms & Conditions</span>
+
+                                <i class="fa-solid fa-arrow-right"></i>
+
+                            </a>
+
+
+                            <a href="privacy.html">
+
+                                <i class="fa-solid fa-shield-halved"></i>
+
+                                <span>Privacy Policy</span>
+
+                                <i class="fa-solid fa-arrow-right"></i>
+
+                            </a>
+
+                        </div>
+
+
+                        <div class="faq-sidebar-note">
+
+                            <i class="fa-solid fa-lightbulb"></i>
+
+                            <div>
+
+                                <h3>Helpful Tip</h3>
+
+                                <p>
+                                    Keep your booking reference
+                                    handy when contacting
+                                    customer support.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                    </aside>
+
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- FINAL CTA -->
+        <section class="faq-final-cta">
+
+            <div class="container">
+
+                <div class="faq-final-content">
+
+                    <span class="section-eyebrow">
+                        WE'RE HAPPY TO HELP
+                    </span>
+
+                    <h2>Every Question Deserves an Answer.</h2>
+
+                    <p>
+                        Our support page is the place to
+                        start when you need assistance
+                        with your HotelSphere experience.
+                    </p>
+
+                    <a href="contact.html"
+                        class="btn btn-primary">
+
+                        Get in Touch
+                        <i class="fa-solid fa-arrow-right"></i>
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+    </main>
+
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+
+        <div class="container">
+
+            <div class="footer-grid">
+
+
+                <div class="footer-brand">
+
+                    <a href="index.html" class="brand-logo">
+
+                        <span class="brand-icon">
+                            <i class="fa-solid fa-hotel"></i>
+                        </span>
+
+                        <span class="brand-text">
+                            <strong>HotelSphere</strong>
+                            <small>STAY BEYOND EXPECTATIONS</small>
+                        </span>
+
+                    </a>
+
+                    <p>
+                        Making every stay comfortable,
+                        convenient and memorable.
+                    </p>
+
+                </div>
+
+
+                <div class="footer-links">
+
+                    <h3>Explore</h3>
+
+                    <a href="index.html">Home</a>
+                    <a href="explore.html">Explore Hotels</a>
+                    <a href="my-bookings.html">My Bookings</a>
+
+                </div>
+
+
+                <div class="footer-links">
+
+                    <h3>Support</h3>
+
+                    <a href="faq.html">FAQs</a>
+                    <a href="contact.html">Contact Us</a>
+                    <a href="terms.html">Terms & Conditions</a>
+
+                </div>
+
+
+                <div class="footer-links">
+
+                    <h3>Contact</h3>
+
+                    <a href="mailto:support@hotelsphere.com">
+                        support@hotelsphere.com
+                    </a>
+
+                    <a href="privacy.html">
+                        Privacy Policy
+                    </a>
+
+                </div>
+
+
+            </div>
+
+
+            <div class="footer-bottom">
+
+                <p>
+                    © <span id="currentYear"></span>
+                    HotelSphere. All rights reserved.
+                </p>
+
+                <p>
+                    <i class="fa-solid fa-heart"></i>
+                    Designed for Better Stays
+                </p>
+
+            </div>
+
+        </div>
+
+    </footer>
+
+
+    <!-- SCRIPTS -->
+    <script src="js/config.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/site.js"></script>
+    <script src="js/faq.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,428 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Manage your HotelSphere account profile and personal information.">
+    <title>My Profile | HotelSphere</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <style>
+        .profile-page {
+            max-width: 1100px;
+            margin: 45px auto;
+            padding: 20px;
+        }
+
+        .profile-heading {
+            margin-bottom: 30px;
+        }
+
+        .profile-heading h1 {
+            font-size: 32px;
+            margin-bottom: 8px;
+        }
+
+        .profile-layout {
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            gap: 25px;
+        }
+
+        .profile-card,
+        .profile-form-card {
+            background: var(--card-bg, #fff);
+            border: 1px solid var(--border-color, #e5e7eb);
+            border-radius: 18px;
+            padding: 28px;
+            box-shadow: 0 8px 30px rgba(0,0,0,.05);
+        }
+
+        .profile-card {
+            text-align: center;
+            height: fit-content;
+        }
+
+        .profile-avatar-wrapper {
+            position: relative;
+            width: 125px;
+            height: 125px;
+            margin: 10px auto 20px;
+        }
+
+        .profile-avatar {
+            width: 125px;
+            height: 125px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #2563eb, #7c3aed);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 45px;
+            font-weight: bold;
+        }
+
+        .profile-photo {
+            width: 125px;
+            height: 125px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        .profile-card h2 {
+            margin-bottom: 7px;
+        }
+
+        .profile-card p {
+            color: var(--text-muted, #777);
+        }
+
+        .profile-photo-actions {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+
+        .profile-photo-actions button,
+        .profile-photo-actions label {
+            cursor: pointer;
+            font-size: 13px;
+        }
+
+        .profile-form-card h2 {
+            margin-bottom: 8px;
+        }
+
+        .profile-description {
+            color: var(--text-muted, #777);
+            margin-bottom: 25px;
+        }
+
+        .profile-form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .profile-field {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .profile-field.full-width {
+            grid-column: 1 / -1;
+        }
+
+        .profile-field label {
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        .profile-field input,
+        .profile-field select {
+            width: 100%;
+            padding: 13px;
+            border: 1px solid var(--border-color, #ddd);
+            border-radius: 9px;
+            background: var(--input-bg, #fff);
+            color: var(--text-color, #222);
+            font: inherit;
+        }
+
+        .profile-field input:disabled,
+        .profile-field select:disabled {
+            opacity: .7;
+            cursor: not-allowed;
+        }
+
+        .profile-actions {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-top: 25px;
+        }
+
+        .profile-message {
+            display: none;
+            margin-top: 18px;
+            padding: 12px;
+            border-radius: 8px;
+        }
+
+        .profile-message.show {
+            display: block;
+        }
+
+        .profile-message.success {
+            background: #dcfce7;
+            color: #166534;
+        }
+
+        .profile-message.error {
+            background: #fee2e2;
+            color: #991b1b;
+        }
+
+        .profile-message.info {
+            background: #dbeafe;
+            color: #1e40af;
+        }
+
+        .profile-back {
+            display: inline-block;
+            margin-bottom: 20px;
+            text-decoration: none;
+        }
+
+        @media(max-width: 750px) {
+            .profile-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .profile-form-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .profile-field.full-width {
+                grid-column: auto;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <main class="profile-page">
+
+        <a href="index.html" class="profile-back">
+            ← Back to Home
+        </a>
+
+        <header class="profile-heading">
+            <h1>My Profile</h1>
+            <p>Manage your personal information and account details.</p>
+        </header>
+
+        <div class="profile-layout">
+
+            <!-- Profile Information Card -->
+            <aside class="profile-card">
+
+                <div class="profile-avatar-wrapper">
+
+                    <div id="profileAvatar" class="profile-avatar">
+                        G
+                    </div>
+
+                    <img
+                        id="profilePhotoPreview"
+                        class="profile-photo hidden"
+                        alt="Profile photo"
+                    >
+
+                </div>
+
+                <h2 id="profileDisplayName">
+                    HotelSphere Guest
+                </h2>
+
+                <p id="profileDisplayEmail">
+                    No email added
+                </p>
+
+                <div class="profile-photo-actions">
+
+                    <label for="profilePhoto" class="btn btn-primary">
+                        Upload Photo
+                    </label>
+
+                    <input
+                        type="file"
+                        id="profilePhoto"
+                        accept="image/*"
+                        hidden
+                        disabled
+                    >
+
+                    <button
+                        type="button"
+                        id="removeProfilePhoto"
+                        class="btn btn-outline"
+                        disabled
+                    >
+                        Remove
+                    </button>
+
+                </div>
+
+                <p style="font-size:12px; margin-top:15px;">
+                    Upload JPG, PNG or other image formats.
+                    Maximum size: 2 MB.
+                </p>
+
+            </aside>
+
+            <!-- Edit Profile Form -->
+            <section class="profile-form-card">
+
+                <h2>Personal Information</h2>
+
+                <p class="profile-description">
+                    Update your personal details below.
+                </p>
+
+                <form id="profileForm">
+
+                    <div class="profile-form-grid">
+
+                        <div class="profile-field">
+                            <label for="profileFirstName">
+                                First Name
+                            </label>
+
+                            <input
+                                type="text"
+                                id="profileFirstName"
+                                placeholder="Enter first name"
+                                autocomplete="given-name"
+                                disabled
+                                required
+                            >
+                        </div>
+
+                        <div class="profile-field">
+                            <label for="profileLastName">
+                                Last Name
+                            </label>
+
+                            <input
+                                type="text"
+                                id="profileLastName"
+                                placeholder="Enter last name"
+                                autocomplete="family-name"
+                                disabled
+                            >
+                        </div>
+
+                        <div class="profile-field full-width">
+                            <label for="profileEmail">
+                                Email Address
+                            </label>
+
+                            <input
+                                type="email"
+                                id="profileEmail"
+                                placeholder="Enter email address"
+                                autocomplete="email"
+                                required
+                                disabled
+                            >
+                        </div>
+
+                        <div class="profile-field full-width">
+                            <label for="profilePhone">
+                                Phone Number
+                            </label>
+
+                            <input
+                                type="tel"
+                                id="profilePhone"
+                                placeholder="Enter phone number"
+                                autocomplete="tel"
+                                disabled
+                            >
+                        </div>
+
+                        <div class="profile-field">
+                            <label for="profileCity">
+                                City
+                            </label>
+
+                            <input
+                                type="text"
+                                id="profileCity"
+                                placeholder="Enter city"
+                                autocomplete="address-level2"
+                                disabled
+                            >
+                        </div>
+
+                        <div class="profile-field">
+                            <label for="profileCountry">
+                                Country
+                            </label>
+
+                            <select
+                                id="profileCountry"
+                                autocomplete="country-name"
+                                disabled
+                            >
+                                <option value="India">India</option>
+                                <option value="United States">United States</option>
+                                <option value="United Kingdom">United Kingdom</option>
+                                <option value="Canada">Canada</option>
+                                <option value="Australia">Australia</option>
+                                <option value="Other">Other</option>
+                            </select>
+                        </div>
+
+                    </div>
+
+                    <div class="profile-actions">
+
+                        <button
+                            type="button"
+                            id="editProfileButton"
+                            class="btn btn-primary"
+                        >
+                            Edit Profile
+                        </button>
+
+                        <button
+                            type="submit"
+                            id="saveProfileButton"
+                            class="btn btn-primary hidden"
+                        >
+                            Save Changes
+                        </button>
+
+                        <button
+                            type="button"
+                            id="cancelProfileButton"
+                            class="btn btn-outline hidden"
+                        >
+                            Cancel
+                        </button>
+
+                    </div>
+
+                    <div
+                        id="profileMessage"
+                        class="profile-message"
+                        role="status"
+                        aria-live="polite"
+                    ></div>
+
+                </form>
+
+            </section>
+
+        </div>
+
+    </main>
+
+    <script src="js/site.js"></script>
+    <script src="js/profile.js"></script>
+
+</body>
+</html>

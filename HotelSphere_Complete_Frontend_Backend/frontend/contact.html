@@ -1,0 +1,919 @@
+
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description"
+        content="Contact HotelSphere for hotel reservations, booking assistance and customer support.">
+
+    <title>Contact Us | HotelSphere</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@500;600;700&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <script>
+        (function () {
+            const theme = localStorage.getItem("hotelsphere-theme");
+
+            if (theme === "dark" || theme === "light") {
+                document.documentElement.setAttribute("data-theme", theme);
+            }
+        })();
+    </script>
+</head>
+
+<body class="contact-page">
+
+    <!-- HEADER -->
+    <header class="site-header">
+
+        <nav class="navbar container">
+
+            <a href="index.html" class="brand-logo">
+
+                <span class="brand-icon">
+                    <i class="fa-solid fa-hotel"></i>
+                </span>
+
+                <span class="brand-text">
+                    <strong>HotelSphere</strong>
+                    <small>STAY BEYOND EXPECTATIONS</small>
+                </span>
+
+            </a>
+
+
+            <div class="nav-links">
+
+                <a href="index.html">Home</a>
+                <a href="explore.html">Explore Hotels</a>
+                <a href="my-bookings.html">My Bookings</a>
+                <a href="contact.html" class="active">Contact</a>
+
+            </div>
+
+
+            <div class="nav-actions">
+
+                <button class="theme-toggle"
+                    id="themeToggle"
+                    type="button"
+                    aria-label="Switch theme">
+
+                    <i class="fa-solid fa-moon"></i>
+
+                </button>
+
+                <a href="login.html" class="btn btn-outline">
+                    Sign In
+                </a>
+
+                <a href="explore.html" class="btn btn-primary">
+                    Book a Stay
+                </a>
+
+            </div>
+
+        </nav>
+
+    </header>
+
+
+    <!-- MAIN -->
+    <main>
+
+
+        <!-- HERO -->
+        <section class="contact-hero">
+
+            <div class="container">
+
+                <div class="contact-hero-content">
+
+                    <span class="section-eyebrow">
+                        WE'RE HERE FOR YOU
+                    </span>
+
+                    <h1>
+                        Let's Make Your
+                        <span>Stay Special.</span>
+                    </h1>
+
+                    <p>
+                        Have a question, need booking assistance
+                        or want to share your feedback?
+                        Our support team is ready to help.
+                    </p>
+
+
+                    <div class="contact-hero-actions">
+
+                        <a href="#contactFormSection"
+                            class="btn btn-primary">
+
+                            Send an Enquiry
+                            <i class="fa-solid fa-arrow-right"></i>
+
+                        </a>
+
+                        <a href="my-bookings.html"
+                            class="btn btn-outline">
+
+                            <i class="fa-solid fa-calendar-check"></i>
+                            Manage Booking
+
+                        </a>
+
+                    </div>
+
+
+                    <div class="contact-live-info">
+
+                        <span>
+                            <i class="fa-regular fa-calendar"></i>
+                            <span id="currentDate">Loading date...</span>
+                        </span>
+
+                        <span>
+                            <i class="fa-regular fa-clock"></i>
+                            <strong id="currentTime">--:--:--</strong>
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- CONTACT METHODS -->
+        <section class="contact-methods-section">
+
+            <div class="container">
+
+                <div class="section-heading">
+
+                    <span class="section-eyebrow">
+                        GET IN TOUCH
+                    </span>
+
+                    <h2>We're Just a Message Away</h2>
+
+                    <p>
+                        Choose the communication channel
+                        that works best for you.
+                    </p>
+
+                </div>
+
+
+                <div class="contact-methods-grid">
+
+
+                    <!-- EMAIL -->
+                    <article class="contact-method-card">
+
+                        <div class="contact-method-icon">
+                            <i class="fa-regular fa-envelope"></i>
+                        </div>
+
+                        <h3>Email Support</h3>
+
+                        <p>
+                            Send your questions and
+                            booking-related enquiries.
+                        </p>
+
+                        <a href="mailto:support@hotelsphere.com">
+                            support@hotelsphere.com
+                            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                        </a>
+
+                    </article>
+
+
+                    <!-- PHONE -->
+                    <article class="contact-method-card">
+
+                        <div class="contact-method-icon">
+                            <i class="fa-solid fa-phone"></i>
+                        </div>
+
+                        <h3>Phone Assistance</h3>
+
+                        <p>
+                            Speak directly with our
+                            customer support team.
+                        </p>
+
+                        <a href="tel:+911234567890">
+                            +91 12345 67890
+                            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                        </a>
+
+                        <small>Demo contact number</small>
+
+                    </article>
+
+
+                    <!-- LOCATION -->
+                    <article class="contact-method-card">
+
+                        <div class="contact-method-icon">
+                            <i class="fa-solid fa-location-dot"></i>
+                        </div>
+
+                        <h3>Visit Our Hotel</h3>
+
+                        <p>
+                            Find our hotel location
+                            and plan your arrival.
+                        </p>
+
+                        <a href="explore.html">
+                            Explore Hotel Locations
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+
+                    </article>
+
+
+                    <!-- SUPPORT HOURS -->
+                    <article class="contact-method-card">
+
+                        <div class="contact-method-icon">
+                            <i class="fa-regular fa-clock"></i>
+                        </div>
+
+                        <h3>Support Hours</h3>
+
+                        <p>
+                            Our sample support schedule
+                            for guest assistance.
+                        </p>
+
+                        <strong class="contact-hours">
+                            Monday – Saturday
+                        </strong>
+
+                        <small>9:00 AM – 6:00 PM IST</small>
+
+                    </article>
+
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- CONTACT FORM SECTION -->
+        <section class="contact-form-section"
+            id="contactFormSection">
+
+            <div class="container">
+
+                <div class="contact-form-layout">
+
+
+                    <!-- LEFT INFORMATION -->
+                    <div class="contact-form-information">
+
+                        <span class="section-eyebrow">
+                            CONTACT HOTELSPHERE
+                        </span>
+
+                        <h2>
+                            Tell Us How
+                            We Can Help.
+                        </h2>
+
+                        <p>
+                            Fill out the enquiry form and
+                            provide a few details. Our team
+                            can use this information to
+                            understand your request.
+                        </p>
+
+
+                        <div class="contact-benefit-list">
+
+                            <div>
+
+                                <span class="contact-benefit-icon">
+                                    <i class="fa-solid fa-headset"></i>
+                                </span>
+
+                                <div>
+
+                                    <h3>Personal Assistance</h3>
+
+                                    <p>
+                                        Get help with reservations,
+                                        room information and general
+                                        enquiries.
+                                    </p>
+
+                                </div>
+
+                            </div>
+
+
+                            <div>
+
+                                <span class="contact-benefit-icon">
+                                    <i class="fa-solid fa-shield-halved"></i>
+                                </span>
+
+                                <div>
+
+                                    <h3>Privacy Matters</h3>
+
+                                    <p>
+                                        We request only the details
+                                        needed to respond to your
+                                        enquiry.
+                                    </p>
+
+                                </div>
+
+                            </div>
+
+
+                            <div>
+
+                                <span class="contact-benefit-icon">
+                                    <i class="fa-solid fa-comments"></i>
+                                </span>
+
+                                <div>
+
+                                    <h3>Guest Feedback</h3>
+
+                                    <p>
+                                        Share suggestions and
+                                        feedback to help us improve
+                                        our services.
+                                    </p>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="contact-image">
+
+                            <img
+                                src="https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=1000&q=85"
+                                alt="Luxury hotel reception and hospitality">
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- FORM -->
+                    <div class="checkout-card contact-form-card">
+
+                        <div class="checkout-card-heading">
+
+                            <div class="checkout-heading-icon">
+                                <i class="fa-solid fa-paper-plane"></i>
+                            </div>
+
+                            <div>
+
+                                <h2>Send Us a Message</h2>
+
+                                <p>
+                                    Fields marked with * are required.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <form id="contactForm" novalidate>
+
+
+                            <!-- NAME -->
+                            <div class="form-group">
+
+                                <label for="contactName">
+                                    Full Name *
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="contactName"
+                                    name="name"
+                                    placeholder="Enter your full name"
+                                    autocomplete="name"
+                                    maxlength="100"
+                                    required>
+
+                            </div>
+
+
+                            <!-- EMAIL -->
+                            <div class="form-group">
+
+                                <label for="contactEmail">
+                                    Email Address *
+                                </label>
+
+                                <input
+                                    type="email"
+                                    id="contactEmail"
+                                    name="email"
+                                    placeholder="name@example.com"
+                                    autocomplete="email"
+                                    maxlength="150"
+                                    required>
+
+                            </div>
+
+
+                            <!-- PHONE -->
+                            <div class="form-group">
+
+                                <label for="contactPhone">
+                                    Mobile Number
+                                    <span class="optional-label">
+                                        Optional
+                                    </span>
+                                </label>
+
+                                <input
+                                    type="tel"
+                                    id="contactPhone"
+                                    name="phone"
+                                    placeholder="Enter mobile number"
+                                    autocomplete="tel"
+                                    maxlength="15">
+
+                            </div>
+
+
+                            <!-- ENQUIRY TYPE -->
+                            <div class="form-group">
+
+                                <label for="enquiryType">
+                                    Enquiry Category *
+                                </label>
+
+                                <select
+                                    id="enquiryType"
+                                    name="enquiryType"
+                                    required>
+
+                                    <option value="">
+                                        Select enquiry category
+                                    </option>
+
+                                    <option value="GENERAL">
+                                        General Enquiry
+                                    </option>
+
+                                    <option value="BOOKING">
+                                        New Booking
+                                    </option>
+
+                                    <option value="MODIFICATION">
+                                        Modify Existing Booking
+                                    </option>
+
+                                    <option value="CANCELLATION">
+                                        Cancellation Request
+                                    </option>
+
+                                    <option value="PAYMENT">
+                                        Payment Related
+                                    </option>
+
+                                    <option value="FEEDBACK">
+                                        Feedback / Suggestion
+                                    </option>
+
+                                    <option value="COMPLAINT">
+                                        Complaint
+                                    </option>
+
+                                    <option value="OTHER">
+                                        Other
+                                    </option>
+
+                                </select>
+
+                            </div>
+
+
+                            <!-- BOOKING ID -->
+                            <div class="form-group">
+
+                                <label for="contactBookingId">
+                                    Booking Reference
+                                    <span class="optional-label">
+                                        Optional
+                                    </span>
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="contactBookingId"
+                                    name="bookingId"
+                                    placeholder="Example: HS-2026-001"
+                                    maxlength="50">
+
+                            </div>
+
+
+                            <!-- SUBJECT -->
+                            <div class="form-group">
+
+                                <label for="contactSubject">
+                                    Subject *
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="contactSubject"
+                                    name="subject"
+                                    placeholder="Enter enquiry subject"
+                                    maxlength="150"
+                                    required>
+
+                            </div>
+
+
+                            <!-- MESSAGE -->
+                            <div class="form-group">
+
+                                <label for="contactMessage">
+                                    Your Message *
+                                </label>
+
+                                <textarea
+                                    id="contactMessage"
+                                    name="message"
+                                    rows="6"
+                                    maxlength="2000"
+                                    placeholder="Write your message here..."
+                                    required></textarea>
+
+                                <small>
+                                    Maximum 2000 characters.
+                                </small>
+
+                            </div>
+
+
+                            <!-- PRIVACY -->
+                            <div class="contact-consent">
+
+                                <label class="remember-option">
+
+                                    <input
+                                        type="checkbox"
+                                        id="contactPrivacy"
+                                        name="privacyConsent"
+                                        required>
+
+                                    <span>
+                                        I agree to the processing of
+                                        my information for responding
+                                        to this enquiry, as described
+                                        in the
+                                        <a href="privacy.html"
+                                            target="_blank">
+                                            Privacy Policy
+                                        </a>.
+                                    </span>
+
+                                </label>
+
+                            </div>
+
+
+                            <!-- MESSAGE -->
+                            <div id="contactFormMessage"
+                                class="form-message"
+                                role="status"
+                                aria-live="polite">
+                            </div>
+
+
+                            <!-- SUBMIT -->
+                            <button type="submit"
+                                id="contactSubmitButton"
+                                class="btn btn-primary contact-submit-btn">
+
+                                <span>Send Message</span>
+
+                                <i class="fa-solid fa-paper-plane"></i>
+
+                            </button>
+
+
+                            <p class="contact-form-note">
+
+                                <i class="fa-solid fa-lock"></i>
+
+                                Please do not share passwords,
+                                card details or sensitive
+                                authentication information.
+
+                            </p>
+
+
+                        </form>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- FAQ SHORTCUTS -->
+        <section class="contact-faq-section">
+
+            <div class="container">
+
+                <div class="section-heading">
+
+                    <span class="section-eyebrow">
+                        QUICK HELP
+                    </span>
+
+                    <h2>Looking for Answers?</h2>
+
+                    <p>
+                        Explore these helpful pages
+                        for common booking-related questions.
+                    </p>
+
+                </div>
+
+
+                <div class="contact-faq-grid">
+
+
+                    <a href="my-bookings.html"
+                        class="contact-faq-card">
+
+                        <span>
+                            <i class="fa-solid fa-calendar-check"></i>
+                        </span>
+
+                        <div>
+
+                            <h3>Manage My Booking</h3>
+
+                            <p>
+                                Review your reservation details
+                                and booking status.
+                            </p>
+
+                        </div>
+
+                        <i class="fa-solid fa-arrow-right"></i>
+
+                    </a>
+
+
+                    <a href="terms.html"
+                        class="contact-faq-card">
+
+                        <span>
+                            <i class="fa-solid fa-file-contract"></i>
+                        </span>
+
+                        <div>
+
+                            <h3>Booking Policies</h3>
+
+                            <p>
+                                Understand reservation and
+                                cancellation terms.
+                            </p>
+
+                        </div>
+
+                        <i class="fa-solid fa-arrow-right"></i>
+
+                    </a>
+
+
+                    <a href="privacy.html"
+                        class="contact-faq-card">
+
+                        <span>
+                            <i class="fa-solid fa-user-shield"></i>
+                        </span>
+
+                        <div>
+
+                            <h3>Privacy & Security</h3>
+
+                            <p>
+                                Learn how customer information
+                                is handled.
+                            </p>
+
+                        </div>
+
+                        <i class="fa-solid fa-arrow-right"></i>
+
+                    </a>
+
+
+                    <a href="explore.html"
+                        class="contact-faq-card">
+
+                        <span>
+                            <i class="fa-solid fa-bed"></i>
+                        </span>
+
+                        <div>
+
+                            <h3>Explore Rooms</h3>
+
+                            <p>
+                                Discover available room
+                                categories and facilities.
+                            </p>
+
+                        </div>
+
+                        <i class="fa-solid fa-arrow-right"></i>
+
+                    </a>
+
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- FINAL CTA -->
+        <section class="contact-final-cta">
+
+            <div class="container">
+
+                <div class="contact-final-content">
+
+                    <div>
+
+                        <span class="section-eyebrow">
+                            YOUR NEXT STAY STARTS HERE
+                        </span>
+
+                        <h2>Ready to Experience HotelSphere?</h2>
+
+                        <p>
+                            Discover comfortable rooms,
+                            thoughtful hospitality and
+                            memorable experiences.
+                        </p>
+
+                    </div>
+
+
+                    <a href="explore.html"
+                        class="btn btn-primary">
+
+                        Explore Hotels
+                        <i class="fa-solid fa-arrow-right"></i>
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+
+        <div class="container">
+
+            <div class="footer-grid">
+
+
+                <div class="footer-brand">
+
+                    <a href="index.html" class="brand-logo">
+
+                        <span class="brand-icon">
+                            <i class="fa-solid fa-hotel"></i>
+                        </span>
+
+                        <span class="brand-text">
+                            <strong>HotelSphere</strong>
+                            <small>STAY BEYOND EXPECTATIONS</small>
+                        </span>
+
+                    </a>
+
+                    <p>
+                        Making every stay comfortable,
+                        convenient and memorable.
+                    </p>
+
+                </div>
+
+
+                <div class="footer-links">
+
+                    <h3>Explore</h3>
+
+                    <a href="index.html">Home</a>
+                    <a href="explore.html">Explore Hotels</a>
+                    <a href="my-bookings.html">My Bookings</a>
+
+                </div>
+
+
+                <div class="footer-links">
+
+                    <h3>Information</h3>
+
+                    <a href="terms.html">Terms & Conditions</a>
+                    <a href="privacy.html">Privacy Policy</a>
+                    <a href="contact.html">Contact Us</a>
+
+                </div>
+
+
+                <div class="footer-links">
+
+                    <h3>Contact</h3>
+
+                    <a href="mailto:support@hotelsphere.com">
+                        support@hotelsphere.com
+                    </a>
+
+                    <a href="tel:+911234567890">
+                        +91 12345 67890
+                    </a>
+
+                </div>
+
+
+            </div>
+
+
+            <div class="footer-bottom">
+
+                <p>
+                    © <span id="currentYear"></span>
+                    HotelSphere. All rights reserved.
+                </p>
+
+                <p>
+                    <i class="fa-solid fa-heart"></i>
+                    Designed for Better Stays
+                </p>
+
+            </div>
+
+        </div>
+
+    </footer>
+
+
+    <!-- SCRIPTS -->
+    <script src="js/config.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/site.js"></script>
+    <script src="js/contact.js"></script>
+
+</body>
+</html>

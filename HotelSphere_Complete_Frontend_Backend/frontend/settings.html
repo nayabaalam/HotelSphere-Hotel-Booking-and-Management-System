@@ -1,0 +1,532 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description" content="Manage your HotelSphere account preferences, appearance and notifications.">
+
+    <title>Settings | HotelSphere</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <style>
+        .settings-page {
+            max-width: 1050px;
+            margin: 45px auto;
+            padding: 20px;
+        }
+
+        .settings-heading {
+            margin-bottom: 30px;
+        }
+
+        .settings-heading h1 {
+            font-size: 32px;
+            margin-bottom: 8px;
+        }
+
+        .settings-heading p {
+            color: var(--text-muted, #777);
+        }
+
+        .settings-layout {
+            display: grid;
+            grid-template-columns: 230px 1fr;
+            gap: 25px;
+        }
+
+        .settings-sidebar,
+        .settings-content {
+            background: var(--card-bg, #fff);
+            border: 1px solid var(--border-color, #e5e7eb);
+            border-radius: 16px;
+            padding: 25px;
+            box-shadow: 0 8px 25px rgba(0,0,0,.04);
+        }
+
+        .settings-sidebar h3 {
+            margin-bottom: 20px;
+        }
+
+        .settings-nav {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .settings-nav a {
+            padding: 12px;
+            border-radius: 8px;
+            color: var(--text-color, #222);
+            text-decoration: none;
+            transition: .25s;
+        }
+
+        .settings-nav a:hover,
+        .settings-nav a.active {
+            background: rgba(37, 99, 235, .10);
+            color: #2563eb;
+        }
+
+        .settings-section {
+            padding-bottom: 28px;
+            margin-bottom: 28px;
+            border-bottom: 1px solid var(--border-color, #e5e7eb);
+        }
+
+        .settings-section:last-of-type {
+            border-bottom: none;
+        }
+
+        .settings-section h2 {
+            font-size: 20px;
+            margin-bottom: 8px;
+        }
+
+        .settings-description {
+            color: var(--text-muted, #777);
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+
+        .setting-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+            padding: 15px 0;
+        }
+
+        .setting-info h4 {
+            margin-bottom: 5px;
+            font-size: 15px;
+        }
+
+        .setting-info p {
+            font-size: 13px;
+            color: var(--text-muted, #777);
+        }
+
+        .setting-control select {
+            min-width: 150px;
+            padding: 11px;
+            border: 1px solid var(--border-color, #ddd);
+            border-radius: 8px;
+            background: var(--input-bg, #fff);
+            color: var(--text-color, #222);
+        }
+
+        /* Toggle Switch */
+
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 48px;
+            height: 26px;
+            flex-shrink: 0;
+        }
+
+        .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .switch-slider {
+            position: absolute;
+            cursor: pointer;
+            inset: 0;
+            background: #cbd5e1;
+            border-radius: 30px;
+            transition: .3s;
+        }
+
+        .switch-slider::before {
+            content: "";
+            position: absolute;
+            height: 20px;
+            width: 20px;
+            left: 3px;
+            bottom: 3px;
+            background: white;
+            border-radius: 50%;
+            transition: .3s;
+        }
+
+        .switch input:checked + .switch-slider {
+            background: #2563eb;
+        }
+
+        .switch input:checked + .switch-slider::before {
+            transform: translateX(22px);
+        }
+
+        .switch input:focus-visible + .switch-slider {
+            outline: 3px solid #93c5fd;
+            outline-offset: 3px;
+        }
+
+        .notification-status {
+            display: block;
+            font-size: 13px;
+            margin-top: 10px;
+            color: var(--text-muted, #777);
+        }
+
+        .settings-actions {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+
+        .settings-message {
+            display: none;
+            padding: 13px;
+            border-radius: 8px;
+            margin-top: 18px;
+            font-size: 14px;
+        }
+
+        .settings-message.show {
+            display: block;
+        }
+
+        .settings-message.success {
+            background: #dcfce7;
+            color: #166534;
+        }
+
+        .settings-message.error {
+            background: #fee2e2;
+            color: #991b1b;
+        }
+
+        .settings-message.info {
+            background: #dbeafe;
+            color: #1e40af;
+        }
+
+        .settings-back {
+            display: inline-block;
+            margin-bottom: 20px;
+            text-decoration: none;
+        }
+
+        @media(max-width: 750px) {
+            .settings-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .settings-nav {
+                flex-direction: row;
+                flex-wrap: wrap;
+            }
+
+            .setting-row {
+                align-items: flex-start;
+            }
+        }
+
+        @media(max-width: 480px) {
+            .setting-row {
+                flex-direction: column;
+            }
+
+            .setting-control {
+                width: 100%;
+            }
+
+            .setting-control select {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <main class="settings-page">
+
+        <a href="index.html" class="settings-back">
+            ← Back to Home
+        </a>
+
+        <header class="settings-heading">
+            <h1>Settings</h1>
+            <p>Customize your HotelSphere experience.</p>
+        </header>
+
+        <div class="settings-layout">
+
+            <!-- Sidebar -->
+            <aside class="settings-sidebar">
+
+                <h3>Preferences</h3>
+
+                <nav class="settings-nav">
+
+                    <a href="#appearance" class="active">
+                        🎨 Appearance
+                    </a>
+
+                    <a href="#notifications">
+                        🔔 Notifications
+                    </a>
+
+                    <a href="#sound">
+                        🔊 Sound
+                    </a>
+
+                </nav>
+
+            </aside>
+
+            <!-- Settings Content -->
+            <section class="settings-content">
+
+                <form id="settingsForm">
+
+                    <!-- Appearance -->
+                    <section
+                        class="settings-section"
+                        id="appearance"
+                    >
+
+                        <h2>Appearance</h2>
+
+                        <p class="settings-description">
+                            Choose how HotelSphere looks on your device.
+                        </p>
+
+                        <div class="setting-row">
+
+                            <div class="setting-info">
+                                <h4>Theme Mode</h4>
+                                <p>Switch between light and dark appearance.</p>
+                            </div>
+
+                            <div class="setting-control">
+
+                                <select id="themeSelect">
+                                    <option value="light">☀️ Light Mode</option>
+                                    <option value="dark">🌙 Dark Mode</option>
+                                </select>
+
+                            </div>
+
+                        </div>
+
+                        <div class="setting-row">
+
+                            <div class="setting-info">
+                                <h4>Quick Theme Selection</h4>
+                                <p>Change your theme instantly.</p>
+                            </div>
+
+                            <div class="setting-control">
+
+                                <button
+                                    type="button"
+                                    class="btn btn-outline"
+                                    data-theme-option="light"
+                                >
+                                    ☀️ Light
+                                </button>
+
+                                <button
+                                    type="button"
+                                    class="btn btn-outline"
+                                    data-theme-option="dark"
+                                >
+                                    🌙 Dark
+                                </button>
+
+                            </div>
+
+                        </div>
+
+                    </section>
+
+                    <!-- Notifications -->
+                    <section
+                        class="settings-section"
+                        id="notifications"
+                    >
+
+                        <h2>Notification Preferences</h2>
+
+                        <p class="settings-description">
+                            Control the types of updates you want to receive.
+                        </p>
+
+                        <div class="setting-row">
+
+                            <div class="setting-info">
+                                <h4>Email Notifications</h4>
+                                <p>Receive updates through email.</p>
+                            </div>
+
+                            <label class="switch">
+                                <input
+                                    type="checkbox"
+                                    id="emailNotifications"
+                                >
+                                <span class="switch-slider"></span>
+                            </label>
+
+                        </div>
+
+                        <div class="setting-row">
+
+                            <div class="setting-info">
+                                <h4>Booking Updates</h4>
+                                <p>Receive booking confirmation and cancellation updates.</p>
+                            </div>
+
+                            <label class="switch">
+                                <input
+                                    type="checkbox"
+                                    id="bookingNotifications"
+                                >
+                                <span class="switch-slider"></span>
+                            </label>
+
+                        </div>
+
+                        <div class="setting-row">
+
+                            <div class="setting-info">
+                                <h4>Promotional Offers</h4>
+                                <p>Receive hotel deals and special offers.</p>
+                            </div>
+
+                            <label class="switch">
+                                <input
+                                    type="checkbox"
+                                    id="promotionalNotifications"
+                                >
+                                <span class="switch-slider"></span>
+                            </label>
+
+                        </div>
+
+                        <div class="setting-row">
+
+                            <div class="setting-info">
+                                <h4>Browser Notifications</h4>
+                                <p>Allow HotelSphere to show browser notifications.</p>
+                            </div>
+
+                            <label class="switch">
+                                <input
+                                    type="checkbox"
+                                    id="browserNotifications"
+                                >
+                                <span class="switch-slider"></span>
+                            </label>
+
+                        </div>
+
+                        <span
+                            id="browserNotificationStatus"
+                            class="notification-status"
+                        >
+                            Checking notification permission...
+                        </span>
+
+                        <div class="settings-actions">
+
+                            <button
+                                type="button"
+                                id="enableBrowserNotifications"
+                                class="btn btn-primary"
+                            >
+                                Enable Browser Notifications
+                            </button>
+
+                            <button
+                                type="button"
+                                id="testNotification"
+                                class="btn btn-outline"
+                            >
+                                Send Test Notification
+                            </button>
+
+                        </div>
+
+                    </section>
+
+                    <!-- Sound -->
+                    <section
+                        class="settings-section"
+                        id="sound"
+                    >
+
+                        <h2>Sound Preferences</h2>
+
+                        <p class="settings-description">
+                            Manage audio feedback and sound effects.
+                        </p>
+
+                        <div class="setting-row">
+
+                            <div class="setting-info">
+                                <h4>Sound Effects</h4>
+                                <p>Enable or disable interface sound effects.</p>
+                            </div>
+
+                            <label class="switch">
+                                <input
+                                    type="checkbox"
+                                    id="soundEffects"
+                                >
+                                <span class="switch-slider"></span>
+                            </label>
+
+                        </div>
+
+                    </section>
+
+                    <!-- Actions -->
+                    <div class="settings-actions">
+
+                        <button
+                            type="submit"
+                            class="btn btn-primary"
+                        >
+                            Save Settings
+                        </button>
+
+                        <button
+                            type="button"
+                            id="resetSettings"
+                            class="btn btn-outline"
+                        >
+                            Reset All Settings
+                        </button>
+
+                    </div>
+
+                    <div
+                        id="settingsMessage"
+                        class="settings-message"
+                        role="status"
+                        aria-live="polite"
+                    ></div>
+
+                </form>
+
+            </section>
+
+        </div>
+
+    </main>
+
+    <script src="js/site.js"></script>
+    <script src="js/settings.js"></script>
+
+</body>
+</html>
